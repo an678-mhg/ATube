@@ -49,3 +49,7 @@ export const descViewApi = (videoId) => {
 export const getVideoTrendingApi = () => {
   return axiosClient.get("/api/video/xu-huong/trending");
 };
+
+export const searchVideoApi = (keyword) => {
+  return axiosClient.get(`/api/video/multi/search?q=${keyword}`);
+};

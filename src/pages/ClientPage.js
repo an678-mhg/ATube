@@ -8,13 +8,14 @@ import DetailsVideo from "./DetailsVideo";
 import SubsrciptionPage from "./SubsrciptionPage";
 import TrendingPage from "./TrendingPage";
 import Logo from "../components/Headers/Logo";
+import SearchResults from "./SearchResults";
 
 const ClientPage = () => {
   const [showMenu, setShowMenu] = useState(false);
   return (
     <div className="px-4 flex">
       <div
-        className={`w-[216px] max-w-full mr-5 lg:block fixed lg:static top-0 bottom-0 bg-[#181818] px-4 lg:px-0 z-[1000] ${
+        className={`w-[216px] pt-[5px] max-w-full mr-5 lg:block fixed lg:static top-0 bottom-0 bg-[#181818] lg:bg-transparent px-4 lg:px-0 z-[1000] ${
           showMenu ? "left-0" : "left-[-100%]"
         } transition-all`}
       >
@@ -30,6 +31,7 @@ const ClientPage = () => {
             <Route path="details/:id" element={<DetailsVideo />} />
             <Route path="subsrciptions" element={<SubsrciptionPage />} />
             <Route path="trending" element={<TrendingPage />} />
+            <Route path="search" element={<SearchResults />} />
           </Routes>
         </div>
       </div>

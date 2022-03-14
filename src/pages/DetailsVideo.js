@@ -14,11 +14,11 @@ import VideoInfoWriter from "../components/Video/VideoInfoWriter";
 import VideoCardRow from "../components/Video/VideoCardRow";
 import Title from "../components/Title";
 import PageNotFound from "./PageNotFound";
-import NoResults from "../components/NoResults";
 
 const DetailsVideo = () => {
   const { video, loading, videoRecomment, likeCount, disLikeCount, error } =
     useSelector((state) => state.video);
+  const { currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { id } = useParams();
 
@@ -32,11 +32,11 @@ const DetailsVideo = () => {
 
   useEffect(() => {
     dispatch(checkLike(id));
-  }, [id]);
+  }, [id, currentUser]);
 
   useEffect(() => {
     dispatch(checkDisLikeVideo(id));
-  }, [id]);
+  }, [id, currentUser]);
 
   if (error) return <PageNotFound />;
 
@@ -45,7 +45,7 @@ const DetailsVideo = () => {
       <Title
         title={`${video?.title || "ATube - Video sharing website"} | ATube`}
       />
-      <div className="w-full md:w-[60%] bg-[#222]">
+      <div className="w-full md:w-[60%]">
         <VideoPlayer src={video?.videoUrl} />
         <VideoInfo
           likeCount={likeCount}
@@ -54,20 +54,22 @@ const DetailsVideo = () => {
         />
         <VideoInfoWriter video={video} />
       </div>
-      <div className="flex-1 md:ml-4 pt-4 md:pt-0 overflow-auto bg-[#222]">
+      <div className="flex-1 md:ml-5 pt-5 md:pt-0 overflow-auto">
         {videoRecomment.length > 1 ? (
           videoRecomment
             ?.filter((p) => p._id !== id)
             .map((p) => (
               <VideoCardRow
                 percentImg={"40%"}
-                maxlengthTitle={30}
+                maxlengthTitle={25}
                 key={p._id}
                 data={p}
               />
             ))
         ) : (
-          <NoResults />
+          <div className="h-screen flex items-center justify-center bg-[#222]">
+            No Results!
+          </div>
         )}
       </div>
 

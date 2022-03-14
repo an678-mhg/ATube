@@ -23,7 +23,7 @@ const NavbarUser = ({ user }) => {
         <img className="w-full h-full object-cover" src={user?.avatar} />
 
         {showNav && (
-          <ul className="absolute right-0 bg-[#333] nav-user-list rounded-md overflow-hidden">
+          <ul className="absolute right-0 bg-[#333] nav-user-list rounded-md overflow-hidden z-[1000]">
             <li className="py-2 px-3 border-b">{user.name}</li>
             <li className="py-2 px-3 border-b">{user.email}</li>
             <li className="py-2 px-3 border-b">Quản lí kênh</li>

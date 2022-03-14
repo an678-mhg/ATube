@@ -29,12 +29,7 @@ const TrendingPage = () => {
     <div className="w-full md:w-[70%] lg:w-[45%] lg:ml-[50px] text-white">
       <Title title={"Trending | ATube - Video sharing website"} />
       {videos.map((p) => (
-        <VideoCardRow
-          percentImg={"50%"}
-          maxlengthTitle={30}
-          key={p?._id}
-          data={p}
-        />
+        <VideoCardRow maxlengthTitle={30} key={p?._id} data={p} />
       ))}
     </div>
   );

@@ -108,7 +108,7 @@ const UploadPage = () => {
         <div>
           <label className="block my-2">Title</label>
           <input
-            className="px-3 py-1 w-full bg-[#111] rounded-sm outline-none"
+            className="px-3 py-1 w-full bg-[#222] rounded-sm outline-none"
             placeholder="Title..."
             name="title"
             onChange={handleChangeInput}
@@ -118,7 +118,7 @@ const UploadPage = () => {
         <div>
           <label className="block my-2">Description</label>
           <textarea
-            className="px-3 py-1 w-full bg-[#111] rounded-sm outline-none"
+            className="px-3 py-1 w-full bg-[#222] rounded-sm outline-none"
             placeholder="Description..."
             name="description"
             rows={5}

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -7,17 +7,18 @@ import {
   disLikeVideo,
   unDisLikeVideo,
 } from "../../redux/slice/videoSlice";
-import { toast } from "react-toastify";
+import ModalAuth from "../ModalAuth";
 
 const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   const { isLike, isDisLike } = useSelector((state) => state.video);
   const { currentUser } = useSelector((state) => state.auth);
+  const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
   const { id } = useParams();
 
   const handleLike = () => {
-    if (!currentUser) return toast.error("Bạn phải đăng nhập trước khi Like");
+    if (!currentUser) return setShowModal(true);
     if (isLike) {
       dispatch(unLike(id));
     } else {
@@ -31,8 +32,7 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   };
 
   const handleDisLike = () => {
-    if (!currentUser)
-      return toast.error("Bạn phải đăng nhập trước khi DisLike");
+    if (!currentUser) return setShowModal(true);
     if (isDisLike) {
       dispatch(unDisLikeVideo(id));
     } else {
@@ -86,6 +86,8 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
           </button>
         </div>
       </div>
+
+      {showModal && <ModalAuth />}
     </div>
   );
 };

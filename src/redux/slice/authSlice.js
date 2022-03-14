@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import setAuthToken from "../../utils/setAuthToken";
 
 const initialState = {
   currentUser: undefined,
@@ -14,6 +15,7 @@ const authSlice = createSlice({
     logOut: (state) => {
       state.currentUser = null;
       localStorage.setItem("token", null);
+      setAuthToken(null);
     },
   },
 });

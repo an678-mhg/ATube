@@ -100,6 +100,9 @@ const videoSlice = createSlice({
     builder.addCase(checkLike.fulfilled, (state, action) => {
       state.isLike = action.payload.isLike;
     });
+    builder.addCase(checkLike.rejected, (state) => {
+      state.isLike = false;
+    });
     builder.addCase(unLike.fulfilled, (state) => {
       state.isLike = false;
       state.likeCount -= 1;
@@ -110,6 +113,9 @@ const videoSlice = createSlice({
     });
     builder.addCase(checkDisLikeVideo.fulfilled, (state, action) => {
       state.isDisLike = action.payload.isDisLike;
+    });
+    builder.addCase(checkDisLikeVideo.rejected, (state) => {
+      state.isDisLike = false;
     });
     builder.addCase(unDisLikeVideo.fulfilled, (state) => {
       state.isDisLike = false;

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getUserInfoApi } from "./api/authApi";
 import Loading from "./components/Loading";
-import PrivateRoute from "./components/PrivateRoute";
 import ClientPage from "./pages/ClientPage";
 import SignInPage from "./pages/SignInPage";
 import SignUpPage from "./pages/SignUpPage";
@@ -41,14 +40,7 @@ function App() {
 
   return (
     <Routes>
-      <Route
-        path="/*"
-        element={
-          <PrivateRoute>
-            <ClientPage />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/*" element={<ClientPage />} />
       <Route path="/sign-in" element={<SignInPage />} />
       <Route path="/sign-up" element={<SignUpPage />} />
     </Routes>
