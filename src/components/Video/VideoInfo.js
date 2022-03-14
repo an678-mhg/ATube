@@ -1,6 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import {
+  addVideoFavourite,
+  getVideoFavourite,
+} from "../../redux/slice/videoFavouriteSlice";
 import {
   likeVideo,
   unLike,
@@ -8,10 +12,12 @@ import {
   unDisLikeVideo,
 } from "../../redux/slice/videoSlice";
 import ModalAuth from "../ModalAuth";
+import { toast } from "react-toastify";
 
 const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   const { isLike, isDisLike } = useSelector((state) => state.video);
   const { currentUser } = useSelector((state) => state.auth);
+  const { videos } = useSelector((state) => state.favourite);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -43,6 +49,19 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
       }
       dispatch(disLikeVideo({ videoId: id }));
     }
+  };
+
+  useEffect(() => {
+    if (!currentUser) return;
+    dispatch(getVideoFavourite());
+  }, [currentUser, dispatch]);
+
+  const handleAddVideoFavourite = () => {
+    const check = videos.some((p) => p._id === video?._id);
+    if (check)
+      return toast.error("Video đã tồn tại trong danh sách yêu thích!");
+    dispatch(addVideoFavourite(video));
+    toast.success("Thêm thành công rồi đó !");
   };
 
   return (
@@ -80,8 +99,17 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
             ></i>
             <span className="ml-1 text-sm">{disLikeCount}</span>
           </button>
-          <button className="flex items-center justify-center p-2">
-            <i className="bx bx-list-plus text-2xl"></i>
+          <button
+            className="flex items-center justify-center p-2"
+            onClick={handleAddVideoFavourite}
+          >
+            <i
+              className={`${
+                videos.some((p) => p._id === video?._id)
+                  ? "bx bx-list-check"
+                  : "bx bx-list-plus"
+              } text-2xl`}
+            ></i>
             <span className="ml-1 text-sm">Add playlist</span>
           </button>
         </div>

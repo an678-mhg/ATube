@@ -9,6 +9,9 @@ import SubsrciptionPage from "./SubsrciptionPage";
 import TrendingPage from "./TrendingPage";
 import Logo from "../components/Headers/Logo";
 import SearchResults from "./SearchResults";
+import FavouritePage from "./FavouritePage";
+import PageNotFound from "./PageNotFound";
+import PrivateRoute from "../components/PrivateRoute";
 
 const ClientPage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -32,6 +35,8 @@ const ClientPage = () => {
             <Route path="subsrciptions" element={<SubsrciptionPage />} />
             <Route path="trending" element={<TrendingPage />} />
             <Route path="search" element={<SearchResults />} />
+            <Route path="favouites" element={<FavouritePage />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>
       </div>

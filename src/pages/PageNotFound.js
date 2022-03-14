@@ -4,7 +4,7 @@ import Title from "../components/Title";
 
 const PageNotFound = () => {
   return (
-    <div className="full-height bg-[#222] flex items-center justify-center">
+    <div className="h-[calc(100vh-70px)] bg-[#222] flex items-center justify-center">
       <Title title={"404 Page"} />
       <div className="error">
         <div className="error-body container">

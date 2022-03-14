@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { calculateCreatedTime } from "../../utils/formatDate";
+import ImageFade from "../ImgFade";
 
 const VideoCard = ({ data }) => {
   return (
@@ -9,7 +10,7 @@ const VideoCard = ({ data }) => {
         to={`/details/${data._id}`}
         className="aspect-[16/9] rounded-sm block"
       >
-        <img
+        <ImageFade
           alt={data?.title}
           className="w-full h-full object-cover"
           src={
