@@ -1,12 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-const VideoCardRow = ({ data, maxlengthTitle }) => {
+const VideoCardRow = ({ data, maxlengthTitle, percentImg }) => {
   return (
     <Link
       to={`/details/${data._id}`}
       className="flex items-center justify-center mb-4"
     >
-      <div className="aspect-[16/9] w-[30%]">
+      <div className={`aspect-[16/9] w-[${percentImg}]`}>
         <img
           src={
             data?.thumnailVideo

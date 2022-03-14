@@ -5,7 +5,7 @@ const Loading = ({ progress }) => {
   return (
     <div className="fixed bg-[#111] top-0 bottom-0 right-0 left-0 flex flex-col items-center justify-center z-30">
       <BarWave />
-      {progress > 0 ? <p className="text-white mt-6">{progress}</p> : null}
+      {progress > 0 ? <p className="text-white mt-6">{progress}%</p> : null}
     </div>
   );
 };

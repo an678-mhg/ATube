@@ -1,10 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const Sidebar = () => {
+const Sidebar = ({ setShowMenu }) => {
   return (
     <ul className="pt-5">
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/"
@@ -13,7 +13,7 @@ const Sidebar = () => {
           <i className="text-[20px] bx bx-home-alt mr-4"></i> Trang chủ
         </NavLink>
       </li>
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/trending"
@@ -22,7 +22,7 @@ const Sidebar = () => {
           <i className="text-[20px] bx bxs-hot mr-4"></i> Thịnh hành
         </NavLink>
       </li>
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/subsrciptions"
@@ -32,7 +32,7 @@ const Sidebar = () => {
         </NavLink>
       </li>
       <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/favorites"
@@ -41,7 +41,7 @@ const Sidebar = () => {
           <i className="text-[20px] bx bx-movie-play mr-4"></i>Video yêu thích
         </NavLink>
       </li>
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/history"
@@ -50,7 +50,7 @@ const Sidebar = () => {
           <i className="text-[20px] bx bx-history mr-4"></i> Video đã xem
         </NavLink>
       </li>
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/channel"
@@ -59,7 +59,7 @@ const Sidebar = () => {
           <i className="text-[20px] bx bx-video mr-4"></i> Video của tôi
         </NavLink>
       </li>
-      <li>
+      <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
           to="/liked-video"

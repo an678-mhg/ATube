@@ -45,7 +45,7 @@ const DetailsVideo = () => {
       <Title
         title={`${video?.title || "ATube - Video sharing website"} | ATube`}
       />
-      <div className="w-full md:w-[60%]">
+      <div className="w-full md:w-[60%] bg-[#222]">
         <VideoPlayer src={video?.videoUrl} />
         <VideoInfo
           likeCount={likeCount}
@@ -54,12 +54,17 @@ const DetailsVideo = () => {
         />
         <VideoInfoWriter video={video} />
       </div>
-      <div className="flex-1 md:ml-4 pt-4 md:pt-0 overflow-auto">
+      <div className="flex-1 md:ml-4 pt-4 md:pt-0 overflow-auto bg-[#222]">
         {videoRecomment.length > 1 ? (
           videoRecomment
             ?.filter((p) => p._id !== id)
             .map((p) => (
-              <VideoCardRow maxlengthTitle={30} key={p._id} data={p} />
+              <VideoCardRow
+                percentImg={"40%"}
+                maxlengthTitle={30}
+                key={p._id}
+                data={p}
+              />
             ))
         ) : (
           <NoResults />
