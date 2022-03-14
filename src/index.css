@@ -1,13 +1,136 @@
-body {
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&display=swap");
+
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  background-color: #181818;
+}
+
+.active {
+  background-color: #ffffff1a;
+  border-radius: 4px;
+}
+
+.skeleton {
+  animation: skeleton 1s linear infinite alternate;
+}
+
+.skeleton-text {
+  height: 6px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.skeleton-text:last-child {
+  width: 80%;
+  margin-bottom: 0px;
+}
+
+@keyframes skeleton {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+.video-player:hover .overplay-video {
+  opacity: 1;
+}
+
+.overplay-video {
+  opacity: 0;
+  transition: all ease-in-out 0.5s;
+  background-color: rgba(0, 0, 0, 0.37);
+}
+
+.nav-user-list {
+  animation: fade-in linear 0.2s;
+}
+
+.full-height {
+  height: calc(100vh - 94px) !important;
+}
+
+@keyframes fade-in {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.error {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-body h1 {
+  font-size: 100px;
+  font-weight: 800;
+  color: #fff;
+}
+
+.error-body p {
+  font-size: 20px;
+  color: #fff;
+  font-weight: 500;
+  margin: 20px 0;
+}
+
+.error-body a {
+  padding: 10px 15px;
+  background-color: #2980b9;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 600;
+  border-radius: 50px;
+  transition: 0.2s all ease-in;
+}
+
+.error-body a:hover {
+  padding: 10px 30px;
 }
