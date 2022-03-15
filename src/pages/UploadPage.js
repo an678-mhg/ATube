@@ -53,7 +53,7 @@ const UploadPage = () => {
       setLoading(true);
       const formData = new FormData();
       formData.append("file", file);
-      formData.append("upload_preset", "o9mf5rdx");
+      formData.append("upload_preset", process.env.REACT_APP_UPLOAD_KEY);
 
       const res = await axios.post(cloudinaryUrl, formData, {
         onUploadProgress: (p) => {
