@@ -11,7 +11,8 @@ import Logo from "../components/Headers/Logo";
 import SearchResults from "./SearchResults";
 import FavouritePage from "./FavouritePage";
 import PageNotFound from "./PageNotFound";
-import PrivateRoute from "../components/PrivateRoute";
+import MyVideoPage from "./MyVideoPage";
+import LikeVideoPage from "./LikeVideoPage";
 
 const ClientPage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -36,6 +37,8 @@ const ClientPage = () => {
             <Route path="trending" element={<TrendingPage />} />
             <Route path="search" element={<SearchResults />} />
             <Route path="favouites" element={<FavouritePage />} />
+            <Route path="my-video" element={<MyVideoPage />} />
+            <Route path="liked-video" element={<LikeVideoPage />} />
             <Route path="*" element={<PageNotFound />} />
           </Routes>
         </div>

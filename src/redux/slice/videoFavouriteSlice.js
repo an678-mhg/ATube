@@ -38,6 +38,10 @@ const videoFavouriteSlice = createSlice({
       state.loading = false;
       state.videos.push(action.payload.video);
     });
+    builder.addCase(addVideoFavourite.rejected, (state) => {
+      state.loading = false;
+      state.error = true;
+    });
     builder.addCase(getVideoFavourite.pending, (state) => {
       state.loading = true;
     });

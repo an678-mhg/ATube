@@ -6,9 +6,9 @@ const WantLogin = () => {
   const location = useLocation();
 
   return (
-    <div className="w-full h-[calc(100vh-70px)] flex justify-center items-center">
-      <div className="w-[400px] max-w-[calc(100%-32px)] bg-[#222] flex items-center justify-between flex-col p-4">
-        <div className="w-[50px] h-[50px] border flex items-center justify-center">
+    <div className="w-full h-[calc(100vh-70px)] flex justify-center items-center mx-auto">
+      <div className="bg-[#222] max-w-[calc(100%-16px)] w-[400px] flex items-center justify-between flex-col p-4 rounded-md">
+        <div className="w-[50px] h-[50px] border flex items-center justify-center rounded-md">
           <i className="bx bx-user text-[30px] text-white"></i>
         </div>
         <p className="py-3 px-5 text-white">Cần đăng nhập để vào trang này!</p>

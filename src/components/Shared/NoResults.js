@@ -8,6 +8,7 @@ const NoResults = () => {
         src={
           "https://raw.githubusercontent.com/Ren0503/zenzen-js-share-video/master/client/src/assets/noresults.png"
         }
+        alt="img"
       />
     </div>
   );

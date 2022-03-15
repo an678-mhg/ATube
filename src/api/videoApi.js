@@ -53,3 +53,7 @@ export const getVideoTrendingApi = () => {
 export const searchVideoApi = (keyword) => {
   return axiosClient.get(`/api/video/multi/search?q=${keyword}`);
 };
+
+export const getLikeVideoApi = () => {
+  return axiosClient.get("/api/video/me/like-video");
+};

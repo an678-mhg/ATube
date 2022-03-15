@@ -1,8 +1,8 @@
-import InfinityLoadPage from "../components/InfinityLoadPage";
+import InfinityLoadPage from "../components/Shared/InfinityLoadPage";
 import { getVideoSubsrciption } from "../redux/slice/infinityLoadSlice";
 import { useState } from "react";
-import Title from "../components/Title";
-import WantLogin from "../components/WantLogin";
+import Title from "../components/Shared/Title";
+import WantLogin from "../components/Shared/WantLogin";
 import { useSelector } from "react-redux";
 
 const SubsrciptionPage = () => {

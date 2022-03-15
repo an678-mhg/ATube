@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import InfiniteScroll from "react-infinite-scroll-component";
 import GridLayout from "./GridLayout";
-import VideoCard from "./Video/VideoCard";
-import { clearData } from "../redux/slice/infinityLoadSlice";
-import PageNotFound from "../pages/PageNotFound";
-import NoResults from "../components/NoResults";
-import SkeletonVideoCard from "../components/Skeleton/SkeletonVideoCard";
+import VideoCard from "../Video/VideoCard";
+import { clearData } from "../../redux/slice/infinityLoadSlice";
+import PageNotFound from "../../pages/PageNotFound";
+import NoResults from "./NoResults";
+import SkeletonVideoCard from "../Skeleton/SkeletonVideoCard";
 import { Spin } from "react-cssfx-loading/lib";
 
 const InfinityLoadPage = ({ page, setPage, functionGetData }) => {

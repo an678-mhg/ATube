@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import Loading from "../Loading";
+import { useDispatch } from "react-redux";
+import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUserInfoApi, loginUserApi } from "../../api/authApi";

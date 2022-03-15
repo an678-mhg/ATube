@@ -7,12 +7,12 @@ import {
   clearVideo,
   getVideoById,
 } from "../redux/slice/videoSlice";
-import Loading from "../components/Loading";
+import Loading from "../components/Loading/Loading";
 import VideoPlayer from "../components/Video/VideoPlayer";
 import VideoInfo from "../components/Video/VideoInfo";
 import VideoInfoWriter from "../components/Video/VideoInfoWriter";
 import VideoCardRow from "../components/Video/VideoCardRow";
-import Title from "../components/Title";
+import Title from "../components/Shared/Title";
 import PageNotFound from "./PageNotFound";
 
 const DetailsVideo = () => {
@@ -28,15 +28,15 @@ const DetailsVideo = () => {
     return () => {
       dispatch(clearVideo());
     };
-  }, [id]);
+  }, [id, dispatch]);
 
   useEffect(() => {
     dispatch(checkLike(id));
-  }, [id, currentUser]);
+  }, [id, currentUser, dispatch]);
 
   useEffect(() => {
     dispatch(checkDisLikeVideo(id));
-  }, [id, currentUser]);
+  }, [id, currentUser, dispatch]);
 
   if (error) return <PageNotFound />;
 

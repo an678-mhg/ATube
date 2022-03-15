@@ -3,9 +3,9 @@ import { cloudinaryUrl } from "../utils/cloudinaryApi";
 import axios from "axios";
 import { uploadVideoApi } from "../api/videoApi";
 import { toast } from "react-toastify";
-import Loading from "../components/Loading";
+import Loading from "../components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
-import Title from "../components/Title";
+import Title from "../components/Shared/Title";
 
 const UploadPage = () => {
   const [file, setFile] = useState();

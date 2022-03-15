@@ -90,12 +90,16 @@ const videoSlice = createSlice({
       state.loading = false;
       state.error = true;
     });
-    builder.addCase(likeVideo.fulfilled, (state) => {
+    builder.addCase(likeVideo.pending, (state) => {
       state.isLike = true;
       state.likeCount += 1;
     });
+    builder.addCase(likeVideo.fulfilled, (state) => {
+      state.error = false;
+    });
     builder.addCase(likeVideo.rejected, (state) => {
       state.isLike = false;
+      state.error = true;
     });
     builder.addCase(checkLike.fulfilled, (state, action) => {
       state.isLike = action.payload.isLike;
@@ -103,13 +107,25 @@ const videoSlice = createSlice({
     builder.addCase(checkLike.rejected, (state) => {
       state.isLike = false;
     });
-    builder.addCase(unLike.fulfilled, (state) => {
+    builder.addCase(unLike.pending, (state) => {
       state.isLike = false;
       state.likeCount -= 1;
     });
-    builder.addCase(disLikeVideo.fulfilled, (state) => {
+    builder.addCase(unLike.fulfilled, (state) => {
+      state.error = false;
+    });
+    builder.addCase(unLike.rejected, (state) => {
+      state.error = true;
+    });
+    builder.addCase(disLikeVideo.pending, (state) => {
       state.isDisLike = true;
       state.disLikeCount += 1;
+    });
+    builder.addCase(disLikeVideo.fulfilled, (state) => {
+      state.error = false;
+    });
+    builder.addCase(disLikeVideo.rejected, (state) => {
+      state.error = true;
     });
     builder.addCase(checkDisLikeVideo.fulfilled, (state, action) => {
       state.isDisLike = action.payload.isDisLike;
@@ -117,9 +133,15 @@ const videoSlice = createSlice({
     builder.addCase(checkDisLikeVideo.rejected, (state) => {
       state.isDisLike = false;
     });
-    builder.addCase(unDisLikeVideo.fulfilled, (state) => {
+    builder.addCase(unDisLikeVideo.pending, (state) => {
       state.isDisLike = false;
       state.disLikeCount -= 1;
+    });
+    builder.addCase(unDisLikeVideo.fulfilled, (state) => {
+      state.error = false;
+    });
+    builder.addCase(unDisLikeVideo.rejected, (state) => {
+      state.error = true;
     });
   },
 });

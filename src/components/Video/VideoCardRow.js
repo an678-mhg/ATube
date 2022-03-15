@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import ImgFade from "../../components/ImgFade";
+import ImgFade from "../Shared/ImgFade";
 
 const VideoCardRow = ({ data, maxlengthTitle }) => {
   return (
@@ -10,7 +10,7 @@ const VideoCardRow = ({ data, maxlengthTitle }) => {
     >
       <div className={`aspect-[16/9] w-[40%]`}>
         <ImgFade
-          src={
+          lazy_src={
             data?.thumnailVideo
               ? data?.thumnailVideo
               : data?.videoUrl?.replace(".mp4", ".jpg")

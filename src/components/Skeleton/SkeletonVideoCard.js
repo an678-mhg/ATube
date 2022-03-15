@@ -1,5 +1,5 @@
 import React from "react";
-import GridLayout from "../GridLayout";
+import GridLayout from "../Shared/GridLayout";
 
 const SkeletonVideoCard = ({ item }) => {
   const arrayNumber = Array.from(Array(item).keys());

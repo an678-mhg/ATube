@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getUserInfoApi, registerUserApi } from "../../api/authApi";
 import { addUser } from "../../redux/slice/authSlice";
 import setAuthToken from "../../utils/setAuthToken";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
 
 const SignUpForm = () => {
   const [data, setData] = useState({

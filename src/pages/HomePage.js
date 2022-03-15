@@ -1,7 +1,7 @@
 import { getVideoHomePage } from "../redux/slice/infinityLoadSlice";
 import { useState } from "react";
-import InfinityLoadPage from "../components/InfinityLoadPage";
-import Title from "../components/Title";
+import InfinityLoadPage from "../components/Shared/InfinityLoadPage";
+import Title from "../components/Shared/Title";
 
 const HomePage = () => {
   const [page, setPage] = useState(1);

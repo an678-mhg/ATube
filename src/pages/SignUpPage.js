@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
 import SignUpForm from "../components/Auth/SIgnUpForm";
-import Title from "../components/Title";
+import Title from "../components/Shared/Title";
 import { useSearchParams } from "../hooks/useSearchParms";
 
 const SignUpPage = () => {

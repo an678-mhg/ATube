@@ -10,7 +10,7 @@ const VideoPlayer = ({ src }) => {
 
   useEffect(() => {
     if (loading) {
-      videoRef.current.pause();
+      videoRef?.current.pause();
     }
   }, [loading]);
 
@@ -19,8 +19,7 @@ const VideoPlayer = ({ src }) => {
       const { duration, currentTime } = videoRef.current;
       const percent = (currentTime * 100) / duration;
       if (percent > 80) {
-        console.log(true);
-        videoRef.current.removeEventListener("timeupdate", handleDescView);
+        videoRef?.current?.removeEventListener("timeupdate", handleDescView);
         descViewApi(id);
       }
     };
@@ -30,7 +29,7 @@ const VideoPlayer = ({ src }) => {
     return () => {
       videoRef.current.removeEventListener("timeupdate", handleDescView);
     };
-  }, []);
+  }, [id]);
 
   return (
     <div className="w-full aspect-[16/9] relative video-player">

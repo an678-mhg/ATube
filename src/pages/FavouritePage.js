@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getVideoFavourite } from "../redux/slice/videoFavouriteSlice";
-import Title from "../components/Title";
+import Title from "../components/Shared/Title";
 import VideoCardRow from "../components/Video/VideoCardRow";
-import LoadingSpin from "../components/LoadingSpin";
-import NoResults from "../components/NoResults";
+import LoadingSpin from "../components/Loading/LoadingSpin";
+import NoResults from "../components/Shared/NoResults";
 import PageNotFound from "./PageNotFound";
-import WantLogin from "../components/WantLogin";
+import WantLogin from "../components/Shared/WantLogin";
 
 const FavouritePage = () => {
   const { videos, error, loading } = useSelector((state) => state.favourite);

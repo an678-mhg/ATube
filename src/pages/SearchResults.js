@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { searchVideoApi } from "../api/videoApi";
 import { useSearchParams } from "../hooks/useSearchParms";
-import Title from "../components/Title";
+import Title from "../components/Shared/Title";
 import VideoCardRow from "../components/Video/VideoCardRow";
-import LoadingSpin from "../components/LoadingSpin";
-import NoResults from "../components/NoResults";
+import LoadingSpin from "../components/Loading/LoadingSpin";
+import NoResults from "../components/Shared/NoResults";
 
 const SearchResults = () => {
   const [results, setResults] = useState([]);

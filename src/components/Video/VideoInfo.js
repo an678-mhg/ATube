@@ -11,13 +11,14 @@ import {
   disLikeVideo,
   unDisLikeVideo,
 } from "../../redux/slice/videoSlice";
-import ModalAuth from "../ModalAuth";
+import ModalAuth from "../Modal/ModalAuth";
 import { toast } from "react-toastify";
+import PageNotFound from "../../pages/PageNotFound";
 
 const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   const { isLike, isDisLike } = useSelector((state) => state.video);
   const { currentUser } = useSelector((state) => state.auth);
-  const { videos } = useSelector((state) => state.favourite);
+  const { videos, loading, error } = useSelector((state) => state.favourite);
   const [showModal, setShowModal] = useState(false);
   const dispatch = useDispatch();
 
@@ -58,11 +59,12 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
 
   const handleAddVideoFavourite = () => {
     const check = videos.some((p) => p._id === video?._id);
-    if (check)
-      return toast.error("Video đã tồn tại trong danh sách yêu thích!");
+    if (check) return toast.error("Video đã tồn tại trong danh sách!");
     dispatch(addVideoFavourite(video));
     toast.success("Thêm thành công rồi đó !");
   };
+
+  if (error) return <PageNotFound />;
 
   return (
     <div className="p-3">
@@ -100,7 +102,10 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
             <span className="ml-1 text-sm">{disLikeCount}</span>
           </button>
           <button
-            className="flex items-center justify-center p-2"
+            disabled={loading}
+            className={`flex items-center justify-center p-2 ${
+              loading ? "cursor-not-allowed" : "cursor-pointer"
+            }`}
             onClick={handleAddVideoFavourite}
           >
             <i
@@ -115,7 +120,7 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
         </div>
       </div>
 
-      {showModal && <ModalAuth />}
+      {showModal && <ModalAuth setShow={setShowModal} />}
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import PageNotFound from "../../pages/PageNotFound";
 import {
   checkSubsrciption,
   getSubsrciption,
@@ -11,18 +12,20 @@ import {
 const VideoInfoWriter = ({ video }) => {
   const dispatch = useDispatch();
 
-  const { subsrciptCount, isSubsrciption } = useSelector((state) => state.sub);
+  const { subsrciptCount, isSubsrciption, error } = useSelector(
+    (state) => state.sub
+  );
   const { currentUser } = useSelector((state) => state.auth);
 
   useEffect(() => {
     if (!video?.writer?._id) return;
     dispatch(getSubsrciption(video?.writer?._id));
-  }, [video?.writer?._id]);
+  }, [video?.writer?._id, dispatch]);
 
   useEffect(() => {
     if (!currentUser || !video?.writer?._id) return;
     dispatch(checkSubsrciption(video?.writer?._id));
-  }, [currentUser, video?.writer?._id]);
+  }, [currentUser, video?.writer?._id, dispatch]);
 
   const handleSubsrciption = () => {
     if (!currentUser) return toast.error("Bạn cần đăng nhập để đăng ký kênh!");
@@ -33,6 +36,8 @@ const VideoInfoWriter = ({ video }) => {
     }
   };
 
+  if (error) return <PageNotFound />;
+
   return (
     <div className="border-t border-b pb-4">
       <div className="p-4">
@@ -42,6 +47,7 @@ const VideoInfoWriter = ({ video }) => {
               <img
                 className="w-full h-full object-cover"
                 src={video?.writer?.avatar}
+                alt="img"
               />
             </div>
             <div className="ml-4">

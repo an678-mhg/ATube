@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { calculateCreatedTime } from "../../utils/formatDate";
-import ImageFade from "../ImgFade";
+import ImageFade from "../Shared/ImgFade";
 
 const VideoCard = ({ data }) => {
   return (
@@ -13,7 +13,7 @@ const VideoCard = ({ data }) => {
         <ImageFade
           alt={data?.title}
           className="w-full h-full object-cover"
-          src={
+          lazy_src={
             data?.thumnailVideo
               ? data?.thumnailVideo
               : data?.videoUrl?.replace(".mp4", ".jpg")

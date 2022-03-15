@@ -9,6 +9,7 @@ import {
 const initialState = {
   isSubsrciption: false,
   subsrciptCount: 0,
+  error: false,
 };
 
 export const subsrciptionChannel = createAsyncThunk(
@@ -46,23 +47,33 @@ const subsrciptionSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(subsrciptionChannel.fulfilled, (state) => {
+    builder.addCase(subsrciptionChannel.pending, (state) => {
       state.isSubsrciption = true;
       state.subsrciptCount += 1;
+    });
+    builder.addCase(subsrciptionChannel.fulfilled, (state) => {
+      state.error = false;
+    });
+    builder.addCase(subsrciptionChannel.rejected, (state) => {
+      state.error = true;
     });
     builder.addCase(checkSubsrciption.fulfilled, (state, action) => {
       state.isSubsrciption = action.payload.isSubsrciption;
     });
-    builder.addCase(unSubsrciption.fulfilled, (state) => {
+    builder.addCase(unSubsrciption.pending, (state) => {
       state.isSubsrciption = false;
       state.subsrciptCount -= 1;
+    });
+    builder.addCase(unSubsrciption.fulfilled, (state) => {
+      state.error = false;
+    });
+    builder.addCase(unSubsrciption.rejected, (state) => {
+      state.error = true;
     });
     builder.addCase(getSubsrciption.fulfilled, (state, action) => {
       state.subsrciptCount = action.payload.subsrciptCount;
     });
   },
 });
-
-export const {} = subsrciptionSlice.actions;
 
 export default subsrciptionSlice.reducer;

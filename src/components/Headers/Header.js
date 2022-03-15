@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NavbarUser from "./NavbarUser";
@@ -7,16 +7,19 @@ import NavLogin from "./NavLogin";
 const Header = ({ setShowMenu }) => {
   const { currentUser } = useSelector((state) => state.auth);
   const inputRef = useRef();
+  const inputRefMobile = useRef();
   const navigate = useNavigate();
+  const [showSearch, setShowSearch] = useState(false);
 
-  const submitForm = (e) => {
+  const submitForm = (e, value) => {
     e.preventDefault();
-    if (!inputRef.current.value.trim()) return;
-    navigate(`/search?q=${inputRef.current.value}`);
+    if (!value.trim()) return;
+    navigate(`/search?q=${value}`);
+    setShowSearch(false);
   };
 
   return (
-    <div className="flex justify-between items-center text-white py-2">
+    <div className="flex justify-between items-center text-white py-2 relative">
       <div className="flex items-center justify-center">
         <i
           onClick={() => setShowMenu(true)}
@@ -25,7 +28,7 @@ const Header = ({ setShowMenu }) => {
       </div>
 
       <form
-        onSubmit={submitForm}
+        onSubmit={(e) => submitForm(e, inputRef.current.value)}
         className="items-center justify-center py-1 w-[500px] hidden md:flex"
       >
         <input
@@ -39,7 +42,32 @@ const Header = ({ setShowMenu }) => {
         </button>
       </form>
 
-      {currentUser ? <NavbarUser user={currentUser} /> : <NavLogin />}
+      <div className="flex items-center">
+        <div
+          className="flex items-center justify-center mr-4 md:hidden"
+          onClick={() => setShowSearch(!showSearch)}
+        >
+          <i
+            className={`${
+              showSearch ? "text-xl bx bx-x" : "text-xl bx bx-search"
+            } text-[25px]`}
+          ></i>
+          <form
+            onClick={(e) => e.stopPropagation()}
+            className={`absolute ${
+              showSearch ? "top-[50px]" : "top-[-50px]"
+            } rigth-0 left-0 w-full transition-all border overflow-hidden`}
+            onSubmit={(e) => submitForm(e, inputRefMobile.current.value)}
+          >
+            <input
+              ref={inputRefMobile}
+              placeholder="Tìm kiếm"
+              className="text-white bg-[#222] flex-1 outline-none w-full px-3 py-2"
+            />
+          </form>
+        </div>
+        {currentUser ? <NavbarUser user={currentUser} /> : <NavLogin />}
+      </div>
     </div>
   );
 };
