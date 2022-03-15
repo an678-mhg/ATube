@@ -14,6 +14,7 @@ import VideoInfoWriter from "../components/Video/VideoInfoWriter";
 import VideoCardRow from "../components/Video/VideoCardRow";
 import Title from "../components/Shared/Title";
 import PageNotFound from "./PageNotFound";
+import { addVideoLocal } from "../utils/localStrorage";
 
 const DetailsVideo = () => {
   const { video, loading, videoRecomment, likeCount, disLikeCount, error } =
@@ -37,6 +38,16 @@ const DetailsVideo = () => {
   useEffect(() => {
     dispatch(checkDisLikeVideo(id));
   }, [id, currentUser, dispatch]);
+
+  useEffect(() => {
+    console.log(123);
+    if (video._id) {
+      addVideoLocal({
+        ...video,
+        viewAt: Date.now(),
+      });
+    }
+  }, [video]);
 
   if (error) return <PageNotFound />;
 

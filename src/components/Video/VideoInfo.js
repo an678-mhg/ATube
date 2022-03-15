@@ -14,6 +14,7 @@ import {
 import ModalAuth from "../Modal/ModalAuth";
 import { toast } from "react-toastify";
 import PageNotFound from "../../pages/PageNotFound";
+import { calculateCreatedTime } from "../../utils/formatDate";
 
 const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   const { isLike, isDisLike } = useSelector((state) => state.video);
@@ -78,7 +79,9 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
           <p className="text-xs text-gray-200 mr-1">
             {video?.totalView} lượt xem
           </p>
-          <p className="text-xs text-gray-200 ml-1">{video?.createdAt}</p>
+          <p className="text-xs text-gray-200 ml-1">
+            {calculateCreatedTime(video?.createdAt)}
+          </p>
         </div>
         <div className="flex items-center mt-4 md:mt-0">
           <button

@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getAllVideosApi, getVideoSubsrciptionApi } from "../../api/videoApi";
+import {
+  getAllVideosApi,
+  getMyVideoApi,
+  getVideoSubsrciptionApi,
+} from "../../api/videoApi";
 
 const initialState = {
   data: [],
@@ -19,6 +23,14 @@ export const getVideoSubsrciption = createAsyncThunk(
   "infinity/getVideoSubsrciption",
   async (page) => {
     const res = await getVideoSubsrciptionApi(page);
+    return res.data;
+  }
+);
+
+export const getMyVideo = createAsyncThunk(
+  "infinity/getMyVideo",
+  async (page) => {
+    const res = await getMyVideoApi(page);
     return res.data;
   }
 );

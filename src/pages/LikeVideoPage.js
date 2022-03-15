@@ -5,6 +5,7 @@ import WantLogin from "../components/Shared/WantLogin";
 import Title from "../components/Shared/Title";
 import VideoCardRow from "../components/Video/VideoCardRow";
 import LoadingSpin from "../components/Loading/LoadingSpin";
+import NoResults from "../components/Shared/NoResults";
 
 const LikeVideoPage = () => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -31,6 +32,8 @@ const LikeVideoPage = () => {
   if (!currentUser) return <WantLogin />;
 
   if (loading) return <LoadingSpin />;
+
+  if (videos.length === 0) return <NoResults />;
 
   return (
     <div className="w-full md:w-[70%] lg:w-[45%] lg:ml-[50px] text-white">

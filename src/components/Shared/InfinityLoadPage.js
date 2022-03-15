@@ -31,7 +31,7 @@ const InfinityLoadPage = ({ page, setPage, functionGetData }) => {
     dispatch(functionGetData(page));
   }, [page]);
 
-  if (loading) return <SkeletonVideoCard item={8} />;
+  if (loading) return <SkeletonVideoCard item={12} />;
 
   if (error) return <PageNotFound />;
 
@@ -43,10 +43,11 @@ const InfinityLoadPage = ({ page, setPage, functionGetData }) => {
           hasMore={page < totalPage}
           next={() => setPage((prev) => prev + 1)}
           loader={
-            <div className="py-3 w-full flex items-center">
+            <div className="py-4 w-full flex justify-center">
               <Spin />
             </div>
           }
+          height={`calc(100vh - 65px)`}
         >
           <GridLayout>
             {data.map((p) => (

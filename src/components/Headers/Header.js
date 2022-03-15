@@ -56,7 +56,7 @@ const Header = ({ setShowMenu }) => {
             onClick={(e) => e.stopPropagation()}
             className={`absolute ${
               showSearch ? "top-[50px]" : "top-[-50px]"
-            } rigth-0 left-0 w-full transition-all border overflow-hidden`}
+            } rigth-0 left-0 w-full transition-all border overflow-hidden z-[100]`}
             onSubmit={(e) => submitForm(e, inputRefMobile.current.value)}
           >
             <input

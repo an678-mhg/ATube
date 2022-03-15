@@ -13,6 +13,7 @@ import FavouritePage from "./FavouritePage";
 import PageNotFound from "./PageNotFound";
 import MyVideoPage from "./MyVideoPage";
 import LikeVideoPage from "./LikeVideoPage";
+import HistoryVideoPage from "./HistoryVideoPage";
 
 const ClientPage = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -26,21 +27,24 @@ const ClientPage = () => {
         <Logo setShowMenu={setShowMenu} />
         <Sidebar setShowMenu={setShowMenu} />
       </div>
-      <div className="flex-1">
+      <div className="flex-1 h-screen">
         <Header setShowMenu={setShowMenu} />
         <div className="pt-3">
-          <Routes>
-            <Route path="" element={<HomePage />} />
-            <Route path="upload" element={<UploadPage />} />
-            <Route path="details/:id" element={<DetailsVideo />} />
-            <Route path="subsrciptions" element={<SubsrciptionPage />} />
-            <Route path="trending" element={<TrendingPage />} />
-            <Route path="search" element={<SearchResults />} />
-            <Route path="favouites" element={<FavouritePage />} />
-            <Route path="my-video" element={<MyVideoPage />} />
-            <Route path="liked-video" element={<LikeVideoPage />} />
-            <Route path="*" element={<PageNotFound />} />
-          </Routes>
+          <div className="h-[calc(100vh-65px)] overflow-auto">
+            <Routes>
+              <Route path="" element={<HomePage />} />
+              <Route path="upload" element={<UploadPage />} />
+              <Route path="details/:id" element={<DetailsVideo />} />
+              <Route path="subsrciptions" element={<SubsrciptionPage />} />
+              <Route path="trending" element={<TrendingPage />} />
+              <Route path="search" element={<SearchResults />} />
+              <Route path="favouites" element={<FavouritePage />} />
+              <Route path="my-video" element={<MyVideoPage />} />
+              <Route path="liked-video" element={<LikeVideoPage />} />
+              <Route path="history" element={<HistoryVideoPage />} />
+              <Route path="*" element={<PageNotFound />} />
+            </Routes>
+          </div>
         </div>
       </div>
     </div>

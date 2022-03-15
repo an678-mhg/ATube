@@ -8,7 +8,7 @@ export const calculateCreatedTime = (timeCreated) => {
     minute: 60 * 1000,
   };
 
-  let diff = Date.now() - timeCreated;
+  let diff = Date.now() - +new Date(`${timeCreated}`);
 
   for (const key in periods) {
     if (diff >= periods[key]) {
