@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { getLikeVideoApi } from "../api/videoApi";
-import WantLogin from "../components/Shared/WantLogin";
-import Title from "../components/Shared/Title";
-import VideoCardRow from "../components/Video/VideoCardRow";
-import LoadingSpin from "../components/Loading/LoadingSpin";
-import NoResults from "../components/Shared/NoResults";
+import { getLikeVideoApi } from "../../api/videoApi";
+import WantLogin from "../../components/Shared/WantLogin";
+import Title from "../../components/Shared/Title";
+import VideoCardRow from "../../components/Video/VideoCardRow";
+import LoadingSpin from "../../components/Loading/LoadingSpin";
+import NoResults from "../../components/Shared/NoResults";
 
 const LikeVideoPage = () => {
   const { currentUser } = useSelector((state) => state.auth);

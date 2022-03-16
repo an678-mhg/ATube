@@ -1,8 +1,8 @@
 import React, { useMemo } from "react";
-import { getVideoLocal } from "../utils/localStrorage";
-import Title from "../components/Shared/Title";
-import VideoCardRow from "../components/Video/VideoCardRow";
-import NoResults from "../components/Shared/NoResults";
+import { getVideoLocal } from "../../utils/localStrorage";
+import Title from "../../components/Shared/Title";
+import VideoCardRow from "../../components/Video/VideoCardRow";
+import NoResults from "../../components/Shared/NoResults";
 
 const HistoryVideoPage = () => {
   const videos = useMemo(getVideoLocal, []);

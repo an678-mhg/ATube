@@ -1,11 +1,11 @@
-import InfinityLoadPage from "../components/Shared/InfinityLoadPage";
-import { getMyVideo } from "../redux/slice/infinityLoadSlice";
+import InfinityLoadPage from "../../components/Shared/InfinityLoadPage";
+import { getVideoSubsrciption } from "../../redux/slice/infinityLoadSlice";
 import { useState } from "react";
-import Title from "../components/Shared/Title";
-import WantLogin from "../components/Shared/WantLogin";
+import Title from "../../components/Shared/Title";
+import WantLogin from "../../components/Shared/WantLogin";
 import { useSelector } from "react-redux";
 
-const MyVideoPage = () => {
+const SubsrciptionPage = () => {
   const [page, setPage] = useState(1);
   const { currentUser } = useSelector((state) => state.auth);
 
@@ -17,10 +17,10 @@ const MyVideoPage = () => {
       <InfinityLoadPage
         page={page}
         setPage={setPage}
-        functionGetData={getMyVideo}
+        functionGetData={getVideoSubsrciption}
       />
     </>
   );
 };
 
-export default MyVideoPage;
+export default SubsrciptionPage;

@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Navigate } from "react-router-dom";
-import SignInForm from "../components/Auth/SignInForm";
-import Title from "../components/Shared/Title";
-import { useSearchParams } from "../hooks/useSearchParms";
+import SignInForm from "../../components/Auth/SignInForm";
+import Title from "../../components/Shared/Title";
+import { useSearchParams } from "../../hooks/useSearchParms";
 
 const SignInPage = () => {
   const { currentUser, message } = useSelector((state) => state.auth);

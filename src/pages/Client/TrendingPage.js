@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getVideoTrendingApi } from "../api/videoApi";
-import LoadingSpin from "../components/Loading/LoadingSpin";
-import Title from "../components/Shared/Title";
-import VideoCardRow from "../components/Video/VideoCardRow";
+import { getVideoTrendingApi } from "../../api/videoApi";
+import LoadingSpin from "../../components/Loading/LoadingSpin";
+import Title from "../../components/Shared/Title";
+import VideoCardRow from "../../components/Video/VideoCardRow";
 
 const TrendingPage = () => {
   const [videos, setVideos] = useState([]);

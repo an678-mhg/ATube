@@ -3,9 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation } from "react-router-dom";
 import { getUserInfoApi } from "./api/authApi";
 import Loading from "./components/Loading/Loading";
-import ClientPage from "./pages/ClientPage";
-import SignInPage from "./pages/SignInPage";
-import SignUpPage from "./pages/SignUpPage";
+import ClientPage from "./pages/Client/ClientPage";
+import SignInPage from "./pages/Auth/SignInPage";
+import SignUpPage from "./pages/Auth/SignUpPage";
 import { addUser, logOut } from "./redux/slice/authSlice";
 import setAuthToken from "./utils/setAuthToken";
 

@@ -1,20 +1,20 @@
 import React, { useState } from "react";
-import Sidebar from "../components/Sidebar";
+import Sidebar from "../../components/Sidebar";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./HomePage";
-import Header from "../components/Headers/Header";
-import UploadPage from "./UploadPage";
-import DetailsVideo from "./DetailsVideo";
-import SubsrciptionPage from "./SubsrciptionPage";
-import TrendingPage from "./TrendingPage";
-import Logo from "../components/Headers/Logo";
-import SearchResults from "./SearchResults";
-import FavouritePage from "./FavouritePage";
-import PageNotFound from "./PageNotFound";
-import MyVideoPage from "./MyVideoPage";
-import LikeVideoPage from "./LikeVideoPage";
-import HistoryVideoPage from "./HistoryVideoPage";
-import ChannelPage from "./ChannelPage/ChannelPage";
+import HomePage from "../Client/HomePage";
+import Header from "../../components/Headers/Header";
+import UploadPage from "../UploadPage";
+import DetailsVideo from "../DetailsVideo";
+import SubsrciptionPage from "../Client/SubsrciptionPage";
+import TrendingPage from "../Client/TrendingPage";
+import Logo from "../../components/Headers/Logo";
+import SearchResults from "../SearchResults";
+import FavouritePage from "../Client/FavouritePage";
+import PageNotFound from "../PageNotFound";
+import MyVideoPage from "../Client/MyVideoPage";
+import LikeVideoPage from "../Client/LikeVideoPage";
+import HistoryVideoPage from "../Client/HistoryVideoPage";
+import ChannelPage from "../ChannelPage/ChannelPage";
 
 const ClientPage = () => {
   const [showMenu, setShowMenu] = useState(false);
