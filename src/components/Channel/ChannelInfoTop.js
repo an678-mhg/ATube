@@ -47,7 +47,7 @@ const ChannelInfoTop = ({ profile, sub }) => {
               <p className="text-[#999] text-sm">{sub} người đăng ký</p>
             </div>
           </div>
-          {currentUser._id !== profile?._id ? (
+          {currentUser?._id !== profile?._id ? (
             <button
               onClick={handleSubsrciption}
               className={`mt-3 md:mt-0 py-2 px-3 ${

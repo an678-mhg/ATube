@@ -6,12 +6,8 @@ import Title from "../../components/Shared/Title";
 import { useSearchParams } from "../../hooks/useSearchParms";
 
 const SignInPage = () => {
-  const { currentUser, message } = useSelector((state) => state.auth);
+  const { currentUser } = useSelector((state) => state.auth);
   const searchParams = useSearchParams();
-
-  useEffect(() => {
-    console.log(message);
-  }, [message]);
 
   if (currentUser) return <Navigate to={searchParams.get("redirect") || "/"} />;
 

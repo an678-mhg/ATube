@@ -14,6 +14,7 @@ const ChannelPage = () => {
   const { profile, loading, error, subsrciptCount } = useSelector(
     (state) => state.channel
   );
+
   const dispatch = useDispatch();
   const { id } = useParams();
 
