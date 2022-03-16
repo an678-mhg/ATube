@@ -94,7 +94,7 @@ const SignUpForm = () => {
           />
         </div>
         <div className="w-full">
-          <button className="py-2 px-3 bg-[#111] text-white rounded-sm w-full">
+          <button className="py-2 px-3 bg-red-500 text-white rounded-sm w-full">
             Đăng ký
           </button>
         </div>

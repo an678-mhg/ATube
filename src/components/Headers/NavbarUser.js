@@ -1,11 +1,7 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { logOut } from "../../redux/slice/authSlice";
 
 const NavbarUser = ({ user }) => {
-  const dispatch = useDispatch();
-
   const [showNav, setShowNav] = useState(false);
 
   return (
@@ -26,12 +22,8 @@ const NavbarUser = ({ user }) => {
           <ul className="absolute right-0 bg-[#333] nav-user-list rounded-md overflow-hidden z-[1000]">
             <li className="py-2 px-3 border-b">{user.name}</li>
             <li className="py-2 px-3 border-b">{user.email}</li>
-            <li className="py-2 px-3 border-b">Quản lí kênh</li>
-            <li
-              onClick={() => dispatch(logOut())}
-              className="py-2 px-3 border-b cursor-pointer"
-            >
-              Đăng xuất
+            <li className="py-2 px-3 border-b">
+              <Link to={`/channel/${user._id}`}>Quản lí kênh</Link>
             </li>
           </ul>
         )}

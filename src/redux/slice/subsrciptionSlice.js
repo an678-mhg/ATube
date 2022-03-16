@@ -45,7 +45,11 @@ export const getSubsrciption = createAsyncThunk(
 const subsrciptionSlice = createSlice({
   name: "sub",
   initialState,
-  reducers: {},
+  reducers: {
+    setSubsrciptions: (state, action) => {
+      state.isSubsrciption = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(subsrciptionChannel.pending, (state) => {
       state.isSubsrciption = true;
@@ -75,5 +79,7 @@ const subsrciptionSlice = createSlice({
     });
   },
 });
+
+export const { setSubsrciptions } = subsrciptionSlice.actions;
 
 export default subsrciptionSlice.reducer;

@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authSlice from "./slice/authSlice";
+import channelSlice from "./slice/channelSlice";
 import infinityLoadSlice from "./slice/infinityLoadSlice";
 import subsrciptionSlice from "./slice/subsrciptionSlice";
 import videoFavouriteSlice from "./slice/videoFavouriteSlice";
@@ -12,5 +13,6 @@ export const store = configureStore({
     sub: subsrciptionSlice,
     infinity: infinityLoadSlice,
     favourite: videoFavouriteSlice,
+    channel: channelSlice,
   },
 });

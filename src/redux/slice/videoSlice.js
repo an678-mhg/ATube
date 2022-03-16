@@ -74,6 +74,12 @@ const videoSlice = createSlice({
       state.isDisLike = false;
       state.error = false;
     },
+    setIsLike: (state, action) => {
+      state.isLike = action.payload;
+    },
+    setIsDisLike: (state, action) => {
+      state.isDisLike = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getVideoById.pending, (state) => {
@@ -146,6 +152,6 @@ const videoSlice = createSlice({
   },
 });
 
-export const { clearVideo } = videoSlice.actions;
+export const { clearVideo, setIsLike, setIsDisLike } = videoSlice.actions;
 
 export default videoSlice.reducer;

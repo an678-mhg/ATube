@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import PageNotFound from "../../pages/PageNotFound";
 import {
   checkSubsrciption,
   getSubsrciption,
+  setSubsrciptions,
   subsrciptionChannel,
   unSubsrciption,
 } from "../../redux/slice/subsrciptionSlice";
@@ -23,7 +25,8 @@ const VideoInfoWriter = ({ video }) => {
   }, [video?.writer?._id, dispatch]);
 
   useEffect(() => {
-    if (!currentUser || !video?.writer?._id) return;
+    if (!currentUser || !video?.writer?._id)
+      return dispatch(setSubsrciptions(false));
     dispatch(checkSubsrciption(video?.writer?._id));
   }, [currentUser, video?.writer?._id, dispatch]);
 
@@ -43,30 +46,40 @@ const VideoInfoWriter = ({ video }) => {
       <div className="p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
-            <div className="w-[50px] h-[50px] rounded-full overflow-hidden">
+            <Link
+              to={`/channel/${video?.writer?._id}`}
+              className="w-[50px] h-[50px] rounded-full overflow-hidden block"
+            >
               <img
                 className="w-full h-full object-cover"
                 src={video?.writer?.avatar}
                 alt="img"
               />
-            </div>
+            </Link>
             <div className="ml-4">
-              <p className="font-semibold text-sm mb-2">
+              <Link
+                to={`/channel/${video?.writer?._id}`}
+                className="font-semibold text-sm mb-2 block"
+              >
                 {video?.writer?.name}
-              </p>
+              </Link>
               <p className="text-gray-300 text-xs">
                 {subsrciptCount} người đăng ký
               </p>
             </div>
           </div>
-          <button
-            className={`py-2 px-3 ${
-              isSubsrciption ? "bg-[#ffffff1a]" : "bg-red-500"
-            } rounded-sm`}
-            onClick={handleSubsrciption}
-          >
-            {isSubsrciption ? "Đã đăng ký" : "Đăng ký"}
-          </button>
+          {currentUser?._id !== video?.writer?._id && (
+            <>
+              <button
+                className={`py-2 px-3 ${
+                  isSubsrciption ? "bg-[#ffffff1a]" : "bg-red-500"
+                } rounded-sm`}
+                onClick={handleSubsrciption}
+              >
+                {isSubsrciption ? "Đã đăng ký" : "Đăng ký"}
+              </button>
+            </>
+          )}
         </div>
       </div>
 

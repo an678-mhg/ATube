@@ -6,6 +6,8 @@ import {
   checkLike,
   clearVideo,
   getVideoById,
+  setIsDisLike,
+  setIsLike,
 } from "../redux/slice/videoSlice";
 import Loading from "../components/Loading/Loading";
 import VideoPlayer from "../components/Video/VideoPlayer";
@@ -32,15 +34,16 @@ const DetailsVideo = () => {
   }, [id, dispatch]);
 
   useEffect(() => {
+    if (!currentUser) return dispatch(setIsLike(false));
     dispatch(checkLike(id));
   }, [id, currentUser, dispatch]);
 
   useEffect(() => {
+    if (!currentUser) return dispatch(setIsDisLike(false));
     dispatch(checkDisLikeVideo(id));
   }, [id, currentUser, dispatch]);
 
   useEffect(() => {
-    console.log(123);
     if (video._id) {
       addVideoLocal({
         ...video,

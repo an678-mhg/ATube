@@ -1,7 +1,12 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { logOut } from "../redux/slice/authSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Sidebar = ({ setShowMenu }) => {
+  const dispatch = useDispatch();
+  const { currentUser } = useSelector((state) => state.auth);
+
   return (
     <ul className="pt-5">
       <li onClick={() => setShowMenu(false)}>
@@ -22,7 +27,6 @@ const Sidebar = ({ setShowMenu }) => {
           <i className="text-[20px] bx bxs-hot mr-4"></i> Thịnh hành
         </NavLink>
       </li>
-      <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>
       <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
@@ -32,6 +36,8 @@ const Sidebar = ({ setShowMenu }) => {
           <i className="text-[20px] bx bxs-videos mr-4"></i> Đã đăng ký
         </NavLink>
       </li>
+      <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>
+
       <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
@@ -68,7 +74,22 @@ const Sidebar = ({ setShowMenu }) => {
           <i className="text-[20px] bx bx-like mr-4"></i> Video đã thích
         </NavLink>
       </li>
-      <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>{" "}
+      {currentUser && (
+        <>
+          <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>
+          <li
+            onClick={() => {
+              setShowMenu(false);
+              dispatch(logOut());
+            }}
+          >
+            <button className="text-white p-2 text-[16px] flex items-center">
+              <i className="bx bx-log-in-circle text-[20px] mr-4"></i> LogOut
+            </button>
+          </li>
+          <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>
+        </>
+      )}
     </ul>
   );
 };

@@ -59,6 +59,7 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   }, [currentUser, dispatch]);
 
   const handleAddVideoFavourite = () => {
+    if (!currentUser) return setShowModal(true);
     const check = videos.some((p) => p._id === video?._id);
     if (check) return toast.error("Video đã tồn tại trong danh sách!");
     dispatch(addVideoFavourite(video));

@@ -8,7 +8,7 @@ const VideoCardRow = ({ data, maxlengthTitle }) => {
       to={`/details/${data._id}`}
       className="flex items-center justify-center mb-4"
     >
-      <div className={`aspect-[16/9] w-[40%]`}>
+      <div className={`aspect-[16/9] w-[45%]`}>
         <ImgFade
           lazy_src={
             data?.thumnailVideo

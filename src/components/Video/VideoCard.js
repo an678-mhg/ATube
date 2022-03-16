@@ -20,13 +20,16 @@ const VideoCard = ({ data }) => {
           }
         />
         <div className="p-4 flex items-start justify-between">
-          <div className="w-[35px] h-[35px] rounded-full overflow-hidden">
+          <Link
+            to={`/channel/${data?.writer?._id}`}
+            className="w-[35px] h-[35px] rounded-full overflow-hidden block"
+          >
             <img
               alt={data?.writer?.name}
               className="w-full h-full object-cover"
               src={data?.writer?.avatar}
             />
-          </div>
+          </Link>
           <div className="ml-5 flex-1 flex flex-col items-start justify-start">
             <p className="text-[12px] hover:underline font-semibold">
               {data?.title?.length > 30

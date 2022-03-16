@@ -20,7 +20,7 @@ body::-webkit-scrollbar {
 }
 
 .active {
-  background-color: #ffffff1a;
+  background-color: #ef4444;
   border-radius: 4px;
 }
 
@@ -48,10 +48,28 @@ body::-webkit-scrollbar {
   }
 }
 
-/* width */
 ::-webkit-scrollbar {
   width: 5px;
-  display: none;
+}
+
+.navigation::-webkit-scrollbar {
+  height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #181818;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 
 .slider:hover {
@@ -127,4 +145,28 @@ body::-webkit-scrollbar {
 
 .error-body a:hover {
   padding: 10px 30px;
+}
+
+.navigation-item {
+  position: relative;
+}
+
+.navigation-item::after {
+  position: absolute;
+  content: "";
+  width: 0%;
+  height: 4px;
+  background-color: #fff;
+  bottom: 0;
+  left: 0;
+  border-radius: 4px;
+  transition: all linear 0.4s;
+}
+
+.navigation-item:hover::after {
+  width: 100%;
+}
+
+.navigation-item.active-line::after {
+  width: 100%;
 }
