@@ -170,3 +170,11 @@ body::-webkit-scrollbar {
 .navigation-item.active-line::after {
   width: 100%;
 }
+
+.label-avatar {
+  display: none;
+}
+
+.avatar:hover .label-avatar {
+  display: flex;
+}

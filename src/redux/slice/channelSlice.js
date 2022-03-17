@@ -1,5 +1,9 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getChannelInfoApi, getChannelVideoApi } from "../../api/channelApi";
+import {
+  getChannelInfoApi,
+  getChannelVideoApi,
+  updateUserApi,
+} from "../../api/channelApi";
 
 const initialState = {
   profile: {},
@@ -25,6 +29,11 @@ export const getChannelVideo = createAsyncThunk(
     return res.data;
   }
 );
+
+export const updatedUser = createAsyncThunk("channel/update", async (data) => {
+  const res = await updateUserApi(data);
+  return res.data;
+});
 
 const channelSlice = createSlice({
   name: "channel",
@@ -52,6 +61,16 @@ const channelSlice = createSlice({
       state.totalPage = action.payload.totalPage;
     });
     builder.addCase(getChannelVideo.rejected, (state) => {
+      state.error = true;
+    });
+    builder.addCase(updatedUser.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(updatedUser.fulfilled, (state, action) => {
+      state.profile = { ...state.profile, ...action.payload.channel };
+      state.loading = false;
+    });
+    builder.addCase(updatedUser.rejected, (state) => {
       state.error = true;
     });
   },

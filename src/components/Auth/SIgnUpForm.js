@@ -37,7 +37,7 @@ const SignUpForm = () => {
       name: Yup.string()
         .required("Trường này là bắt buộc!")
         .min(6, "Tên phải có ít nhất 6 kí tự!")
-        .max(10, "Tên không đc vượt quá 10 kí tự!"),
+        .max(20, "Tên không đc vượt quá 20 kí tự!"),
       email: Yup.string()
         .required("Trường này là bắt buộc!")
         .matches(

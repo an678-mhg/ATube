@@ -7,3 +7,7 @@ export const getChannelInfoApi = (id) => {
 export const getChannelVideoApi = (id, page) => {
   return axiosClient.get(`/api/channel/video/${id}?page=${page}`);
 };
+
+export const updateUserApi = (data) => {
+  return axiosClient.put("/api/channel/user", data);
+};

@@ -23,7 +23,7 @@ const UploadPage = () => {
     const file = e.target.files[0];
     if (file?.type !== "video/mp4")
       return toast.error("Vui lòng chọn file định dạng video mp4!");
-    if (file?.size / 1024 / 1024 > 35)
+    if (file?.size / 1024 / 1024 > 30)
       return toast.error("Dung lượng file phải bé hơn 30mb!");
 
     const preview = URL.createObjectURL(file);

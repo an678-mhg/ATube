@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -8,11 +8,13 @@ import {
   unSubsrciption,
 } from "../../redux/slice/subsrciptionSlice";
 import { toast } from "react-toastify";
+import ModalUpdateUser from "../Modal/ModalUpdateUser";
 
 const ChannelInfoTop = ({ profile, sub }) => {
   const { currentUser } = useSelector((state) => state.auth);
   const { isSubsrciption } = useSelector((state) => state.sub);
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
 
   const { id } = useParams();
 
@@ -58,7 +60,10 @@ const ChannelInfoTop = ({ profile, sub }) => {
             </button>
           ) : (
             <div>
-              <button className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500 mr-4">
+              <button
+                onClick={() => setShow(true)}
+                className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500 mr-4"
+              >
                 Tùy chỉnh kênh
               </button>
               <button className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500">
@@ -67,6 +72,8 @@ const ChannelInfoTop = ({ profile, sub }) => {
             </div>
           )}
         </div>
+
+        {show && <ModalUpdateUser setShow={setShow} />}
       </div>
     </div>
   );
