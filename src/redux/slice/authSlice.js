@@ -15,6 +15,7 @@ const authSlice = createSlice({
     logOut: (state) => {
       state.currentUser = null;
       localStorage.setItem("token", null);
+      localStorage.setItem("a-tube-history", null);
       setAuthToken(null);
     },
   },

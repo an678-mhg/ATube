@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -10,7 +10,9 @@ import {
   setIsLike,
 } from "../redux/slice/videoSlice";
 import Loading from "../components/Loading/Loading";
-import VideoPlayer from "../components/Video/VideoPlayer";
+// import VideoPlayer from "../components/Video/VideoPlayer";
+import { Player } from "react-tuby";
+import "react-tuby/css/main.css";
 import VideoInfo from "../components/Video/VideoInfo";
 import VideoInfoWriter from "../components/Video/VideoInfoWriter";
 import VideoCardRow from "../components/Video/VideoCardRow";
@@ -60,7 +62,13 @@ const DetailsVideo = () => {
         title={`${video?.title || "ATube - Video sharing website"} | ATube`}
       />
       <div className="w-full md:w-[60%]">
-        <VideoPlayer src={video?.videoUrl} />
+        {/* <VideoPlayer src={video?.videoUrl} /> */}
+        {video?.videoUrl && (
+          <Player
+            poster={video?.videoUrl.replace(".mp4", ".jpg")}
+            src={video?.videoUrl}
+          />
+        )}
         <VideoInfo
           likeCount={likeCount}
           disLikeCount={disLikeCount}

@@ -26,7 +26,7 @@ const ChannelInfoTop = ({ profile, sub }) => {
   };
 
   useEffect(() => {
-    if (!currentUser) dispatch(setSubsrciptions(false));
+    if (!currentUser) return dispatch(setSubsrciptions(false));
     if (!profile?._id) return;
     dispatch(checkSubsrciption(profile?._id));
   }, [id, currentUser, profile?._id]);
@@ -59,7 +59,7 @@ const ChannelInfoTop = ({ profile, sub }) => {
           ) : (
             <div>
               <button className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500 mr-4">
-                Chỉnh sửa thông tin
+                Tùy chỉnh kênh
               </button>
               <button className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500">
                 Quản lí video

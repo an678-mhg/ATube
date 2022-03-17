@@ -1,8 +1,10 @@
 # Atube
 
-A video sharing website
+- A video sharing website
 
-Live demo: [https://ytb-fake.vercel.app/](https://ytb-fake.vercel.app/)
+### Live demo:
+
+[https://ytb-fake.vercel.app/](https://ytb-fake.vercel.app/)
 
 ### Features
 
@@ -18,6 +20,7 @@ Live demo: [https://ytb-fake.vercel.app/](https://ytb-fake.vercel.app/)
 - ReactJs
 - Tailwind CSS
 - Redux, Redux toolkit
+- Formik, Yup
 - Nodejs
 - ExpressJs
 - MongoDB

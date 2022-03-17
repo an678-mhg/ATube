@@ -1,14 +1,12 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
+import Overlay from "./Overlay";
 
 const ModalAuth = ({ setShow }) => {
   const location = useLocation();
 
   return (
-    <div
-      className="fixed top-0 bottom-0 right-0 left-0 background-overlay flex items-center justify-center"
-      onClick={() => setShow(false)}
-    >
+    <Overlay setShow={setShow}>
       <Link
         onClick={(e) => e.stopPropagation()}
         to={`/sign-in?redirect=${encodeURIComponent(location.pathname)}`}
@@ -16,7 +14,7 @@ const ModalAuth = ({ setShow }) => {
       >
         Đăng nhập ngay
       </Link>
-    </div>
+    </Overlay>
   );
 };
 
