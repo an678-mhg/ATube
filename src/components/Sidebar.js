@@ -1,14 +1,31 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { logOut } from "../redux/slice/authSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { getChannelSubsrciptionApi } from "../api/channelApi";
+import ChannelItem from "./Channel/ChannelItem";
 
 const Sidebar = ({ setShowMenu }) => {
   const dispatch = useDispatch();
   const { currentUser } = useSelector((state) => state.auth);
+  const [subChannel, setSubChannel] = useState([]);
+
+  useEffect(() => {
+    if (!currentUser) return;
+    (async () => {
+      try {
+        const res = await getChannelSubsrciptionApi();
+        if (res.data.success) {
+          setSubChannel(res.data.subsrciption);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })();
+  }, [currentUser]);
 
   return (
-    <ul className="pt-5">
+    <ul className="pt-5 h-[calc(100vh-65px)] overflow-auto">
       <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
@@ -88,6 +105,15 @@ const Sidebar = ({ setShowMenu }) => {
             </button>
           </li>
           <div className="w-full h-[1px] bg-[#ccc] my-4 opacity-10"></div>
+
+          <div className="text-white p-2 text-[16px]">
+            <h1>Kênh đăng ký</h1>
+            <div className="mt-4">
+              {subChannel.map((p) => (
+                <ChannelItem key={p._id} data={p} />
+              ))}
+            </div>
+          </div>
         </>
       )}
     </ul>

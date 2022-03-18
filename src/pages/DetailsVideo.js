@@ -54,6 +54,10 @@ const DetailsVideo = () => {
     }
   }, [video]);
 
+  const handleTimeUpdate = (ref) => {
+    console.log(ref.current.currentTime);
+  };
+
   if (error) return <PageNotFound />;
 
   return (
@@ -67,7 +71,17 @@ const DetailsVideo = () => {
           <Player
             poster={video?.videoUrl.replace(".mp4", ".jpg")}
             src={video?.videoUrl}
-          />
+          >
+            {(ref, props) => (
+              <video
+                onTimeUpdate={() => handleTimeUpdate(ref)}
+                ref={ref}
+                {...props}
+                autoPlay
+                loop
+              />
+            )}
+          </Player>
         )}
         <VideoInfo
           likeCount={likeCount}

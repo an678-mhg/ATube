@@ -124,14 +124,14 @@ const ModalUpdateUser = ({ setShow }) => {
     <Overlay setShow={setShow}>
       <form
         onSubmit={handleUpdated}
-        className="text-white bg-[#333] w-[500px] max-w-[calc(100%-16px)]"
+        className="text-white bg-[#333] w-[500px] max-w-[calc(100%-32px)]"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="w-full aspect-[16/5] relative avatar">
           <img className="w-full h-full object-cover" src={previewBackground} />
           <label
             htmlFor="file-bg"
-            className="absolute top-0 bottom-0 right-0 left-0 hidden items-center justify-center bg-black opacity-50 label-avatar"
+            className="transition-opacity absolute top-0 bottom-0 right-0 left-0 lg:hidden flex items-center justify-center bg-black opacity-50 label-avatar"
           >
             <i className="bx bx-cloud-upload text-2xl text-white"></i>
           </label>
@@ -142,7 +142,7 @@ const ModalUpdateUser = ({ setShow }) => {
             <img className="w-full h-full object-cover" src={previewAvatar} />
             <label
               htmlFor="file-avatar"
-              className="absolute top-0 bottom-0 right-0 left-0 hidden items-center justify-center bg-black opacity-50 label-avatar"
+              className="transition-opacity absolute top-0 bottom-0 right-0 left-0 lg:hidden items-center flex justify-center bg-black opacity-50 label-avatar"
             >
               <i className="bx bx-cloud-upload text-2xl text-white"></i>
             </label>
@@ -173,6 +173,7 @@ const ModalUpdateUser = ({ setShow }) => {
               className="py-1 px-3 rounded-sm w-full bg-[#222] text-white outline-none"
               onChange={handleChange}
               value={data.description}
+              rows="4"
             />
           </div>
           <div className="mt-4">

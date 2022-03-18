@@ -14,7 +14,7 @@ const Header = ({ setShowMenu }) => {
   const submitForm = (e, value) => {
     e.preventDefault();
     if (!value.trim()) return;
-    navigate(`/search?q=${value}`);
+    navigate(`/search?type=video&q=${value}`);
     setShowSearch(false);
   };
 
@@ -37,7 +37,7 @@ const Header = ({ setShowMenu }) => {
           type="text"
           placeholder="Tìm kiếm"
         />
-        <button className="px-3 bg-[#ffffff1a] w-[45px] h-[30px] flex items-center">
+        <button className="px-3 bg-red-500 w-[45px] h-[30px] flex items-center">
           <i className="text-xl bx bx-search"></i>
         </button>
       </form>

@@ -64,7 +64,8 @@ body::-webkit-scrollbar {
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
-  border-radius: 10px;
+  border-radius: 5px;
+  height: 20px;
 }
 
 /* Handle on hover */
@@ -154,7 +155,6 @@ body::-webkit-scrollbar {
 .navigation-item::after {
   position: absolute;
   content: "";
-  width: 0%;
   height: 4px;
   background-color: #fff;
   bottom: 0;
@@ -163,16 +163,8 @@ body::-webkit-scrollbar {
   transition: all linear 0.4s;
 }
 
-.navigation-item:hover::after {
-  width: 100%;
-}
-
 .navigation-item.active-line::after {
   width: 100%;
-}
-
-.label-avatar {
-  display: none;
 }
 
 .avatar:hover .label-avatar {

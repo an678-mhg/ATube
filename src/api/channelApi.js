@@ -11,3 +11,11 @@ export const getChannelVideoApi = (id, page) => {
 export const updateUserApi = (data) => {
   return axiosClient.put("/api/channel/user", data);
 };
+
+export const searchChannelApi = (query) => {
+  return axiosClient.get(`/api/channel/search/multi?q=${query}`);
+};
+
+export const getChannelSubsrciptionApi = () => {
+  return axiosClient.get("/api/channel/sub/resgisted");
+};

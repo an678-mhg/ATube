@@ -33,7 +33,12 @@ const ChannelPage = () => {
         <Route path="videos" element={<VideoPage />} />
         <Route
           path="descriptions"
-          element={<DescriptionPage descriptions={profile?.description} />}
+          element={
+            <DescriptionPage
+              email={profile?.email}
+              descriptions={profile?.description}
+            />
+          }
         />
       </Routes>
 
