@@ -13,7 +13,9 @@ import ModalUpdateUser from "../Modal/ModalUpdateUser";
 
 const ChannelInfoTop = ({ profile }) => {
   const { currentUser } = useSelector((state) => state.auth);
-  const { isSubsrciption, subsrciptCount } = useSelector((state) => state.sub);
+  const { isSubsrciption, subsrciptCount, isCheck } = useSelector(
+    (state) => state.sub
+  );
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -62,10 +64,13 @@ const ChannelInfoTop = ({ profile }) => {
           </div>
           {currentUser?._id !== profile?._id ? (
             <button
+              disabled={isCheck}
               onClick={handleSubsrciption}
               className={`mt-3 md:mt-0 py-2 px-3 ${
                 isSubsrciption ? "bg-[#ffffff1a]" : "bg-red-500"
-              } rounded-sm`}
+              } rounded-sm ${
+                isCheck ? "cursor-not-allowed" : "cursor-pointer"
+              }`}
             >
               {isSubsrciption ? "Đã đăng ký" : "Đăng ký"}
             </button>
