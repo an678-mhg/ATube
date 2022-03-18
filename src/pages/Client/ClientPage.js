@@ -11,7 +11,6 @@ import Logo from "../../components/Headers/Logo";
 import SearchResults from "../SearchResults";
 import FavouritePage from "../Client/FavouritePage";
 import PageNotFound from "../PageNotFound";
-import MyVideoPage from "../Client/MyVideoPage";
 import LikeVideoPage from "../Client/LikeVideoPage";
 import HistoryVideoPage from "../Client/HistoryVideoPage";
 import ChannelPage from "../ChannelPage/ChannelPage";
@@ -40,7 +39,6 @@ const ClientPage = () => {
               <Route path="trending" element={<TrendingPage />} />
               <Route path="search" element={<SearchResults />} />
               <Route path="favouites" element={<FavouritePage />} />
-              <Route path="my-video" element={<MyVideoPage />} />
               <Route path="liked-video" element={<LikeVideoPage />} />
               <Route path="history" element={<HistoryVideoPage />} />
               <Route path="channel/:id/*" element={<ChannelPage />} />

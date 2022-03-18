@@ -14,7 +14,7 @@ import {
 const VideoInfoWriter = ({ video }) => {
   const dispatch = useDispatch();
 
-  const { subsrciptCount, isSubsrciption, error } = useSelector(
+  const { subsrciptCount, isSubsrciption, error, isCheck } = useSelector(
     (state) => state.sub
   );
   const { currentUser } = useSelector((state) => state.auth);
@@ -33,7 +33,9 @@ const VideoInfoWriter = ({ video }) => {
   const handleSubsrciption = () => {
     if (!currentUser) return toast.error("Bạn cần đăng nhập để đăng ký kênh!");
     if (isSubsrciption) {
-      dispatch(unSubsrciption(video?.writer?._id));
+      if (window.confirm("Bạn muốn hủy đăng ký!")) {
+        dispatch(unSubsrciption(video?.writer?._id));
+      }
     } else {
       dispatch(subsrciptionChannel({ channelId: video?.writer?._id }));
     }
@@ -73,8 +75,11 @@ const VideoInfoWriter = ({ video }) => {
               <button
                 className={`py-2 px-3 ${
                   isSubsrciption ? "bg-[#ffffff1a]" : "bg-red-500"
-                } rounded-sm`}
+                } rounded-sm ${
+                  isCheck ? "cursor-not-allowed" : "cursor-pointer"
+                }`}
                 onClick={handleSubsrciption}
+                disabled={isCheck}
               >
                 {isSubsrciption ? "Đã đăng ký" : "Đăng ký"}
               </button>

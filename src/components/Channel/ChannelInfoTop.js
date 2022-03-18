@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import {
   checkSubsrciption,
   setSubsrciptions,
   subsrciptionChannel,
   unSubsrciption,
+  getSubsrciption,
 } from "../../redux/slice/subsrciptionSlice";
 import { toast } from "react-toastify";
 import ModalUpdateUser from "../Modal/ModalUpdateUser";
 
-const ChannelInfoTop = ({ profile, sub }) => {
+const ChannelInfoTop = ({ profile }) => {
   const { currentUser } = useSelector((state) => state.auth);
-  const { isSubsrciption } = useSelector((state) => state.sub);
+  const { isSubsrciption, subsrciptCount } = useSelector((state) => state.sub);
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
 
@@ -21,7 +22,9 @@ const ChannelInfoTop = ({ profile, sub }) => {
   const handleSubsrciption = () => {
     if (!currentUser) return toast.error("Bạn cần đăng nhập để đăng ký kênh!");
     if (isSubsrciption) {
-      dispatch(unSubsrciption(profile?._id));
+      if (window.confirm("Bạn muốn hủy đăng ký!")) {
+        dispatch(unSubsrciption(profile?._id));
+      }
     } else {
       dispatch(subsrciptionChannel({ channelId: profile?._id }));
     }
@@ -29,9 +32,15 @@ const ChannelInfoTop = ({ profile, sub }) => {
 
   useEffect(() => {
     if (!currentUser) return dispatch(setSubsrciptions(false));
+    if (currentUser._id === profile?._id) return;
     if (!profile?._id) return;
     dispatch(checkSubsrciption(profile?._id));
   }, [id, currentUser, profile?._id]);
+
+  useEffect(() => {
+    if (!profile?._id) return;
+    dispatch(getSubsrciption(profile?._id));
+  }, [profile?._id]);
 
   return (
     <div className="bg-[#222]">
@@ -46,7 +55,9 @@ const ChannelInfoTop = ({ profile, sub }) => {
             </div>
             <div className="md:ml-4 ml-0 md:mt-0 mt-3 text-center lg:text-left">
               <p>{profile?.name}</p>
-              <p className="text-[#999] text-sm">{sub} người đăng ký</p>
+              <p className="text-[#999] text-sm">
+                {subsrciptCount} người đăng ký
+              </p>
             </div>
           </div>
           {currentUser?._id !== profile?._id ? (
@@ -59,16 +70,19 @@ const ChannelInfoTop = ({ profile, sub }) => {
               {isSubsrciption ? "Đã đăng ký" : "Đăng ký"}
             </button>
           ) : (
-            <div>
+            <div className="flex">
               <button
                 onClick={() => setShow(true)}
                 className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500 mr-4"
               >
                 Tùy chỉnh kênh
               </button>
-              <button className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500">
+              <Link
+                to="videos"
+                className="mt-3 md:mt-0 py-2 px-3 rounded-sm bg-blue-500 block"
+              >
                 Quản lí video
-              </button>
+              </Link>
             </div>
           )}
         </div>

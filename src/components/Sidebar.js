@@ -76,15 +76,6 @@ const Sidebar = ({ setShowMenu }) => {
       <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
-          to="/my-video"
-          className="text-white p-2 text-[16px] flex items-center"
-        >
-          <i className="text-[20px] bx bx-video mr-4"></i> Video của tôi
-        </NavLink>
-      </li>
-      <li onClick={() => setShowMenu(false)}>
-        <NavLink
-          activeclassname="active"
           to="/liked-video"
           className="text-white p-2 text-[16px] flex items-center"
         >

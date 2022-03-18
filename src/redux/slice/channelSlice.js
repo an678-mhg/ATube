@@ -10,7 +10,6 @@ const initialState = {
   videos: [],
   loading: false,
   error: false,
-  subsrciptCount: 0,
   totalPage: 0,
 };
 
@@ -49,7 +48,6 @@ const channelSlice = createSlice({
     });
     builder.addCase(getChannelInfo.fulfilled, (state, action) => {
       state.profile = action.payload.channel;
-      state.subsrciptCount = action.payload.subsrciptionCount;
       state.loading = false;
     });
     builder.addCase(getChannelInfo.rejected, (state) => {

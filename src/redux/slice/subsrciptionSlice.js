@@ -10,6 +10,7 @@ const initialState = {
   isSubsrciption: false,
   subsrciptCount: 0,
   error: false,
+  isCheck: false,
 };
 
 export const subsrciptionChannel = createAsyncThunk(
@@ -61,8 +62,12 @@ const subsrciptionSlice = createSlice({
     builder.addCase(subsrciptionChannel.rejected, (state) => {
       state.error = true;
     });
+    builder.addCase(checkSubsrciption.pending, (state) => {
+      state.isCheck = true;
+    });
     builder.addCase(checkSubsrciption.fulfilled, (state, action) => {
       state.isSubsrciption = action.payload.isSubsrciption;
+      state.isCheck = false;
     });
     builder.addCase(unSubsrciption.pending, (state) => {
       state.isSubsrciption = false;

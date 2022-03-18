@@ -57,7 +57,3 @@ export const searchVideoApi = (keyword) => {
 export const getLikeVideoApi = () => {
   return axiosClient.get("/api/video/me/like-video");
 };
-
-export const getMyVideoApi = (page) => {
-  return axiosClient.get(`/api/video/me/my-video?page=${page}`);
-};

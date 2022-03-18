@@ -11,9 +11,7 @@ import HomePage from "./HomePage";
 import VideoPage from "./VideoPage";
 
 const ChannelPage = () => {
-  const { profile, loading, error, subsrciptCount } = useSelector(
-    (state) => state.channel
-  );
+  const { profile, loading, error } = useSelector((state) => state.channel);
 
   const dispatch = useDispatch();
   const { id } = useParams();
@@ -27,7 +25,7 @@ const ChannelPage = () => {
   return (
     <div>
       <Title title={`${profile?.name} | ATube video sharing website`} />
-      <ChannelInfo profile={profile} sub={subsrciptCount} />
+      <ChannelInfo profile={profile} />
       <Routes>
         <Route path="" element={<HomePage name={profile?.name} />} />
         <Route path="videos" element={<VideoPage />} />
