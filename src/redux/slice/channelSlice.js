@@ -4,6 +4,7 @@ import {
   getChannelVideoApi,
   updateUserApi,
 } from "../../api/channelApi";
+import { deleteVideoApi, editVideoApi } from "../../api/videoApi";
 
 const initialState = {
   profile: {},
@@ -33,6 +34,23 @@ export const updatedUser = createAsyncThunk("channel/update", async (data) => {
   const res = await updateUserApi(data);
   return res.data;
 });
+
+export const deleteVideo = createAsyncThunk(
+  "channel/deleteVideo",
+  async (id) => {
+    await deleteVideoApi(id);
+    return id;
+  }
+);
+
+export const editVideo = createAsyncThunk(
+  "channel/editVideo",
+  async ({ id, data }) => {
+    console.log(id, data);
+    const res = await editVideoApi(id, data);
+    return res.data;
+  }
+);
 
 const channelSlice = createSlice({
   name: "channel",
@@ -69,6 +87,32 @@ const channelSlice = createSlice({
       state.loading = false;
     });
     builder.addCase(updatedUser.rejected, (state) => {
+      state.error = true;
+    });
+    builder.addCase(deleteVideo.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(deleteVideo.fulfilled, (state, action) => {
+      state.videos = state.videos.filter((p) => p._id !== action.payload);
+      state.loading = false;
+    });
+    builder.addCase(deleteVideo.rejected, (state) => {
+      state.error = true;
+    });
+    builder.addCase(editVideo.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(editVideo.fulfilled, (state, action) => {
+      state.videos = state.videos.map((p) => {
+        if (p._id === action.payload.video._id) {
+          return action.payload.video;
+        }
+
+        return p;
+      });
+      state.loading = false;
+    });
+    builder.addCase(editVideo.rejected, (state) => {
       state.error = true;
     });
   },

@@ -57,3 +57,11 @@ export const searchVideoApi = (keyword) => {
 export const getLikeVideoApi = () => {
   return axiosClient.get("/api/video/me/like-video");
 };
+
+export const editVideoApi = (id, data) => {
+  return axiosClient.put(`/api/video/${id}`, data);
+};
+
+export const deleteVideoApi = (id) => {
+  return axiosClient.delete(`/api/video/${id}`);
+};

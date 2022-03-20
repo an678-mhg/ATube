@@ -11,8 +11,8 @@ const VideoCardRow = ({ data, maxlengthTitle }) => {
       <div className={`aspect-[16/9] w-[45%]`}>
         <ImgFade
           lazy_src={
-            data?.thumnailVideo
-              ? data?.thumnailVideo
+            data?.videoThumnail
+              ? data?.videoThumnail
               : data?.videoUrl?.replace(".mp4", ".jpg")
           }
           className="w-full h-full object-cover rounded-md"

@@ -9,6 +9,7 @@ import { clearVideo, getChannelVideo } from "../../redux/slice/channelSlice";
 
 const VideoPage = () => {
   const { videos, totalPage } = useSelector((state) => state.channel);
+  const { currentUser } = useSelector((state) => state.auth);
   const [loading, setLoading] = useState(false);
   const [loadMore, setLoadMore] = useState(false);
   const [page, setPage] = useState(1);
@@ -49,7 +50,11 @@ const VideoPage = () => {
     <div className="mt-10">
       <GridLayout>
         {videos.map((p) => (
-          <VideoCard key={p?._id} data={p} />
+          <VideoCard
+            edit={currentUser?._id === p?.writer?._id}
+            key={p?._id}
+            data={p}
+          />
         ))}
       </GridLayout>
       {loadMore && (

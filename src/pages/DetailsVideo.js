@@ -69,7 +69,9 @@ const DetailsVideo = () => {
         {/* <VideoPlayer src={video?.videoUrl} /> */}
         {video?.videoUrl && (
           <Player
-            poster={video?.videoUrl.replace(".mp4", ".jpg")}
+            poster={
+              video?.videoThumnail || video?.videoUrl.replace(".mp4", ".jpg")
+            }
             src={video?.videoUrl}
           >
             {(ref, props) => (

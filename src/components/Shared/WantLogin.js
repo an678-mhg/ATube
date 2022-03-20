@@ -11,7 +11,9 @@ const WantLogin = () => {
         <div className="w-[50px] h-[50px] border flex items-center justify-center rounded-md">
           <i className="bx bx-user text-[30px] text-white"></i>
         </div>
-        <p className="py-3 px-5 text-white">Cần đăng nhập để vào trang này!</p>
+        <p className="py-3 px-5 text-white text-center">
+          Cần đăng nhập để vào trang này!
+        </p>
         <Link
           to={`/sign-in?redirect=${encodeURIComponent(location.pathname)}`}
           className="py-2 px-3 bg-red-600 text-white rounded-md"

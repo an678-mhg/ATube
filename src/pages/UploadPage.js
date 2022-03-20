@@ -43,6 +43,8 @@ const UploadPage = () => {
 
   const handleSubmitForm = async (e) => {
     e.preventDefault();
+    if (!data.title.trim() || !data.description.trim())
+      return toast.error("Không được để trống các trường!");
     if (data.title.trim().length > 76)
       return toast.error("Tiêu đề video không được dài quá 76 kí tự!");
     if (data.description.trim().length > 100)

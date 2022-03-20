@@ -166,7 +166,3 @@ body::-webkit-scrollbar {
 .navigation-item.active-line::after {
   width: 100%;
 }
-
-.avatar:hover .label-avatar {
-  display: flex;
-}
