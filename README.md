@@ -8,7 +8,15 @@
 
 ### Features
 
-- Updating....
+- Sign-In, Sign-Up
+- Watch video, upload video, favorite video
+- Subsrciption, Unsubsrciption,
+- Like, Dislike video
+- History video
+- Update, Delete video,
+- Update channel (name, background, avatar, description)
+- Comment video
+- Search video, channel by name
 
 ### Preview
 
