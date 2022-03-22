@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import Loading from "../components/Loading/Loading";
 import { useNavigate } from "react-router-dom";
 import Title from "../components/Shared/Title";
+import { useSelector } from "react-redux";
+import WantLogin from "../components/Shared/WantLogin";
 
 const UploadPage = () => {
   const [file, setFile] = useState();
@@ -16,6 +18,7 @@ const UploadPage = () => {
     description: "",
   });
   const [loading, setLoading] = useState(false);
+  const { currentUser } = useSelector((state) => state.auth);
 
   const navigate = useNavigate();
 
@@ -82,61 +85,71 @@ const UploadPage = () => {
   };
 
   return (
-    <form onSubmit={handleSubmitForm} className="text-white">
-      <Title title={"Upload a new video | ATube - Video sharing website"} />
-      <div className="flex items-center border md:flex-row flex-col rounded-sm bg-[#111]">
-        <label
-          htmlFor="file-upload"
-          className="md:w-[50%] w-full aspect-[16/9] flex items-center justify-center border-r"
-        >
-          <i className="text-[60px] bx bx-plus"></i>
-          <input
-            type="file"
-            id="file-upload"
-            hidden
-            onChange={handleOnchangeFile}
-            accept="video/mp4,video/x-m4v,video/*"
-          />
-        </label>
-        {previewVideo && (
-          <video
-            controls
-            src={previewVideo}
-            className="md:w-[50%] w-full aspect-[16/9]"
-          />
-        )}
-      </div>
-      <div className="mt-4">
-        <div>
-          <label className="block my-2">Title</label>
-          <input
-            className="px-3 py-1 w-full bg-[#222] rounded-sm outline-none"
-            placeholder="Title..."
-            name="title"
-            onChange={handleChangeInput}
-            value={data.title}
-          />
-        </div>
-        <div>
-          <label className="block my-2">Description</label>
-          <textarea
-            className="px-3 py-1 w-full bg-[#222] rounded-sm outline-none"
-            placeholder="Description..."
-            name="description"
-            rows={5}
-            value={data.description}
-            onChange={handleChangeInput}
-          />
-        </div>
-        <div className="my-4">
-          <button className="px-3 py-2 bg-blue-500 rounded-sm text-white w-full">
-            Upload video!
-          </button>
-        </div>
-      </div>
+    <>
+      {currentUser ? (
+        <>
+          <form onSubmit={handleSubmitForm} className="text-white">
+            <Title
+              title={"Upload a new video | ATube - Video sharing website"}
+            />
+            <div className="flex items-center border md:flex-row flex-col rounded-sm bg-[#111]">
+              <label
+                htmlFor="file-upload"
+                className="md:w-[50%] w-full aspect-[16/9] flex items-center justify-center border-r"
+              >
+                <i className="text-[60px] bx bx-plus"></i>
+                <input
+                  type="file"
+                  id="file-upload"
+                  hidden
+                  onChange={handleOnchangeFile}
+                  accept="video/mp4,video/x-m4v,video/*"
+                />
+              </label>
+              {previewVideo && (
+                <video
+                  controls
+                  src={previewVideo}
+                  className="md:w-[50%] w-full aspect-[16/9]"
+                />
+              )}
+            </div>
+            <div className="mt-4">
+              <div>
+                <label className="block my-2">Title</label>
+                <input
+                  className="px-3 py-1 w-full bg-[#222] rounded-sm outline-none"
+                  placeholder="Title..."
+                  name="title"
+                  onChange={handleChangeInput}
+                  value={data.title}
+                />
+              </div>
+              <div>
+                <label className="block my-2">Description</label>
+                <textarea
+                  className="px-3 py-1 w-full bg-[#222] rounded-sm outline-none"
+                  placeholder="Description..."
+                  name="description"
+                  rows={5}
+                  value={data.description}
+                  onChange={handleChangeInput}
+                />
+              </div>
+              <div className="my-4">
+                <button className="px-3 py-2 bg-blue-500 rounded-sm text-white w-full">
+                  Upload video!
+                </button>
+              </div>
+            </div>
 
-      {loading && <Loading progress={progress} />}
-    </form>
+            {loading && <Loading progress={progress} />}
+          </form>
+        </>
+      ) : (
+        <WantLogin />
+      )}
+    </>
   );
 };
 

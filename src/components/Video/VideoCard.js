@@ -14,9 +14,8 @@ const VideoCard = ({ data, edit }) => {
   const handleDeleteVideo = () => {
     if (window.confirm("Bạn chắc chắn muốn xóa video này")) {
       dispatch(deleteVideo(data?._id));
+      toast.success("Xóa video thành công!");
     }
-
-    toast.success("Xóa video thành công!");
   };
 
   return (

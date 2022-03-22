@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import {
@@ -19,6 +19,10 @@ import VideoCardRow from "../components/Video/VideoCardRow";
 import Title from "../components/Shared/Title";
 import PageNotFound from "./PageNotFound";
 import { addVideoLocal } from "../utils/localStrorage";
+import InputComment from "../components/Comment/InputComment";
+import { getCommentApi } from "../api/commentApi";
+import CommentList from "../components/Comment/CommentList";
+import { descViewApi } from "../api/videoApi";
 
 const DetailsVideo = () => {
   const { video, loading, videoRecomment, likeCount, disLikeCount, error } =
@@ -26,6 +30,29 @@ const DetailsVideo = () => {
   const { currentUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const { id } = useParams();
+  const [commentList, setCommentList] = useState([]);
+
+  const addComment = (comment) => {
+    setCommentList([...commentList, comment]);
+  };
+
+  const deleteComment = (id) => {
+    const newListComment = commentList.filter((p) => p._id !== id);
+    setCommentList(newListComment);
+  };
+
+  useEffect(() => {
+    (async (videoId) => {
+      try {
+        const res = await getCommentApi(videoId);
+        if (res.data.success) {
+          setCommentList(res.data.comments);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    })(id);
+  }, [id]);
 
   useEffect(() => {
     dispatch(getVideoById(id));
@@ -54,9 +81,9 @@ const DetailsVideo = () => {
     }
   }, [video]);
 
-  const handleTimeUpdate = (ref) => {
-    console.log(ref.current.currentTime);
-  };
+  useEffect(() => {
+    descViewApi(id);
+  }, [id]);
 
   if (error) return <PageNotFound />;
 
@@ -74,15 +101,7 @@ const DetailsVideo = () => {
             }
             src={video?.videoUrl}
           >
-            {(ref, props) => (
-              <video
-                onTimeUpdate={() => handleTimeUpdate(ref)}
-                ref={ref}
-                {...props}
-                autoPlay
-                loop
-              />
-            )}
+            {(ref, props) => <video ref={ref} {...props} autoPlay loop />}
           </Player>
         )}
         <VideoInfo
@@ -91,6 +110,8 @@ const DetailsVideo = () => {
           video={video}
         />
         <VideoInfoWriter video={video} />
+        <InputComment addComment={addComment} />
+        <CommentList deleteComment={deleteComment} commentList={commentList} />
       </div>
       <div className="flex-1 md:ml-5 pt-5 md:pt-0 overflow-auto">
         {videoRecomment.length > 1 ? (
