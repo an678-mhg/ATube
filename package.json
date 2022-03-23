@@ -17,7 +17,6 @@
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
     "react-toastify": "^8.2.0",
-    "react-tuby": "^0.1.14",
     "redux": "^4.1.2",
     "web-vitals": "^2.1.4",
     "yup": "^0.32.11"

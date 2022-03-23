@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
 import PageNotFound from "../../pages/PageNotFound";
 import {
   checkSubsrciption,
@@ -10,9 +9,11 @@ import {
   subsrciptionChannel,
   unSubsrciption,
 } from "../../redux/slice/subsrciptionSlice";
+import ModalAuth from "../Modal/ModalAuth";
 
 const VideoInfoWriter = ({ video }) => {
   const dispatch = useDispatch();
+  const [show, setShow] = useState(false);
 
   const { subsrciptCount, isSubsrciption, error, isCheck } = useSelector(
     (state) => state.sub
@@ -31,7 +32,7 @@ const VideoInfoWriter = ({ video }) => {
   }, [currentUser, video?.writer?._id, dispatch]);
 
   const handleSubsrciption = () => {
-    if (!currentUser) return toast.error("Bạn cần đăng nhập để đăng ký kênh!");
+    if (!currentUser) return setShow(true);
     if (isSubsrciption) {
       if (window.confirm("Bạn muốn hủy đăng ký!")) {
         dispatch(unSubsrciption(video?.writer?._id));
@@ -92,6 +93,8 @@ const VideoInfoWriter = ({ video }) => {
         <p>Mô tả:</p>
         <p className="text-sm">{video?.description}</p>
       </div>
+
+      {show && <ModalAuth setShow={setShow} />}
     </div>
   );
 };

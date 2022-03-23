@@ -46,7 +46,6 @@ export const deleteVideo = createAsyncThunk(
 export const editVideo = createAsyncThunk(
   "channel/editVideo",
   async ({ id, data }) => {
-    console.log(id, data);
     const res = await editVideoApi(id, data);
     return res.data;
   }

@@ -20,20 +20,23 @@ function App() {
   }, [location.search, location.pathname]);
 
   useEffect(() => {
-    if (localStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
+      console.log("meo có token");
+      dispatch(logOut());
+      return;
+    } else {
       setAuthToken(localStorage.getItem("token"));
-    }
-
-    (async () => {
-      try {
-        const res = await getUserInfoApi();
-        if (res.data.success) {
-          dispatch(addUser(res.data.user));
+      (async () => {
+        try {
+          const res = await getUserInfoApi();
+          if (res.data.success) {
+            dispatch(addUser(res.data.user));
+          }
+        } catch (error) {
+          dispatch(logOut());
         }
-      } catch (error) {
-        dispatch(logOut());
-      }
-    })();
+      })();
+    }
   }, [dispatch]);
 
   if (typeof currentUser === "undefined") return <Loading />;

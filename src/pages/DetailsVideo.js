@@ -10,8 +10,6 @@ import {
   setIsLike,
 } from "../redux/slice/videoSlice";
 import Loading from "../components/Loading/Loading";
-// import VideoPlayer from "../components/Video/VideoPlayer";
-import { Player } from "react-tuby";
 import "react-tuby/css/main.css";
 import VideoInfo from "../components/Video/VideoInfo";
 import VideoInfoWriter from "../components/Video/VideoInfoWriter";
@@ -95,14 +93,7 @@ const DetailsVideo = () => {
       <div className="w-full md:w-[60%]">
         {/* <VideoPlayer src={video?.videoUrl} /> */}
         {video?.videoUrl && (
-          <Player
-            poster={
-              video?.videoThumnail || video?.videoUrl.replace(".mp4", ".jpg")
-            }
-            src={video?.videoUrl}
-          >
-            {(ref, props) => <video ref={ref} {...props} autoPlay loop />}
-          </Player>
+          <video src={video?.videoUrl} autoPlay loop controls />
         )}
         <VideoInfo
           likeCount={likeCount}

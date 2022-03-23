@@ -16,6 +16,7 @@ const Header = ({ setShowMenu }) => {
     if (!value.trim()) return;
     navigate(`/search?type=video&q=${value}`);
     setShowSearch(false);
+    inputRef.current.value = "";
   };
 
   return (

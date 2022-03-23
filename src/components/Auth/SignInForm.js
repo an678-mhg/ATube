@@ -114,6 +114,12 @@ const SignInForm = () => {
             Đăng ký
           </Link>
         </p>
+
+        <div className="border-t border-red-500 mt-4 pt-4">
+          <button>
+            <Link to="/">Quay lại trang chủ!</Link>
+          </button>
+        </div>
       </div>
 
       {loading && <Loading />}

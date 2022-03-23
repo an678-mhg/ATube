@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const ChannelCard = ({ data }) => {
   return (
-    <Link to={`/channel/${data?._id}`} className="flex items-center">
+    <Link to={`/channel/${data?._id}`} className="flex items-center mb-4">
       <div className="w-[80px] h-[80px] overflow-hidden rounded-full border-2 border-red-500">
         <img className="w-full h-full object-cover" src={data?.avatar} />
       </div>

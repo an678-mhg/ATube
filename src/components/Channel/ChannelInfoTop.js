@@ -8,8 +8,8 @@ import {
   unSubsrciption,
   getSubsrciption,
 } from "../../redux/slice/subsrciptionSlice";
-import { toast } from "react-toastify";
 import ModalUpdateUser from "../Modal/ModalUpdateUser";
+import ModalAuth from "../Modal/ModalAuth";
 
 const ChannelInfoTop = ({ profile }) => {
   const { currentUser } = useSelector((state) => state.auth);
@@ -18,11 +18,12 @@ const ChannelInfoTop = ({ profile }) => {
   );
   const dispatch = useDispatch();
   const [show, setShow] = useState(false);
+  const [showModalAuth, setShowModalAuth] = useState(false);
 
   const { id } = useParams();
 
   const handleSubsrciption = () => {
-    if (!currentUser) return toast.error("Bạn cần đăng nhập để đăng ký kênh!");
+    if (!currentUser) return setShowModalAuth(true);
     if (isSubsrciption) {
       if (window.confirm("Bạn muốn hủy đăng ký!")) {
         dispatch(unSubsrciption(profile?._id));
@@ -93,6 +94,7 @@ const ChannelInfoTop = ({ profile }) => {
         </div>
 
         {show && <ModalUpdateUser setShow={setShow} />}
+        {showModalAuth && <ModalAuth setShow={setShowModalAuth} />}
       </div>
     </div>
   );
