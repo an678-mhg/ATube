@@ -69,7 +69,7 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
   if (error) return <PageNotFound />;
 
   return (
-    <div className="p-3">
+    <div className="py-2">
       <h1 className="text-[20px] font-semibold my-3">
         {video?.title?.length > 100
           ? video?.title?.slice(0, 100) + "..."

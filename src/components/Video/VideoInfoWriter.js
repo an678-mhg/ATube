@@ -46,7 +46,7 @@ const VideoInfoWriter = ({ video }) => {
 
   return (
     <div className="border-t border-b pb-4">
-      <div className="p-4">
+      <div className="py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link
@@ -89,7 +89,7 @@ const VideoInfoWriter = ({ video }) => {
         </div>
       </div>
 
-      <div className="mt-2 px-4">
+      <div className="mt-2">
         <p>Mô tả:</p>
         <p className="text-sm">{video?.description}</p>
       </div>

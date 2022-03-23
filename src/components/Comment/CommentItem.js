@@ -3,6 +3,7 @@ import { toast } from "react-toastify";
 import { deleteCommentApi } from "../../api/commentApi";
 import { calculateCreatedTime } from "../../utils/formatDate";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const CommentItem = ({ data, deleteComment }) => {
   const [loading, setLoading] = useState(false);
@@ -25,12 +26,15 @@ const CommentItem = ({ data, deleteComment }) => {
 
   return (
     <div className="flex mb-4">
-      <div className="w-[40px] h-[40px] rounded-full overflow-hidden">
+      <Link
+        className="w-[40px] h-[40px] rounded-full overflow-hidden"
+        to={`/channel/${data?.userId?._id}`}
+      >
         <img
           className="w-full h-full object-cover"
           src={data?.userId?.avatar}
         />
-      </div>
+      </Link>
       <div className="flex-1 ml-4 overflow-hidden flex items-center justify-between">
         <div className="flex-1 overflow-hidden">
           <div className="flex items-center text-xs text-[#999]">
