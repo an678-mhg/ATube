@@ -10,7 +10,6 @@ import {
   setIsLike,
 } from "../redux/slice/videoSlice";
 import Loading from "../components/Loading/Loading";
-import "react-tuby/css/main.css";
 import VideoInfo from "../components/Video/VideoInfo";
 import VideoInfoWriter from "../components/Video/VideoInfoWriter";
 import VideoCardRow from "../components/Video/VideoCardRow";
