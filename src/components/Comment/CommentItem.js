@@ -16,7 +16,7 @@ const CommentItem = ({ data, deleteComment }) => {
       const res = await deleteCommentApi(id);
       if (res.data.success) {
         deleteComment(id);
-        toast.success("Xóa nhận sét thành công!");
+        toast.success("Xóa nhận xét thành công!");
       } else {
         toast.error("Xóa nhận xét thất bại!");
       }

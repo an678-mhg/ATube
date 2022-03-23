@@ -92,7 +92,13 @@ const DetailsVideo = () => {
       <div className="w-full md:w-[60%]">
         {/* <VideoPlayer src={video?.videoUrl} /> */}
         {video?.videoUrl && (
-          <video src={video?.videoUrl} autoPlay loop controls />
+          <video
+            className="aspect-[16/9] w-full h-full"
+            src={video?.videoUrl}
+            autoPlay
+            loop
+            controls
+          />
         )}
         <VideoInfo
           likeCount={likeCount}
