@@ -90,7 +90,6 @@ const DetailsVideo = () => {
         title={`${video?.title || "ATube - Video sharing website"} | ATube`}
       />
       <div className="w-full md:w-[60%]">
-        {/* <VideoPlayer src={video?.videoUrl} /> */}
         {video?.videoUrl && (
           <div className="aspect-[16/9]">
             <video

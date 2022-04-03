@@ -70,17 +70,17 @@ const VideoInfo = ({ video, likeCount, disLikeCount }) => {
 
   return (
     <div className="py-2">
-      <h1 className="text-[20px] font-semibold my-3">
+      <h1 className="text-[20px] font-semibold my-1">
         {video?.title?.length > 100
           ? video?.title?.slice(0, 100) + "..."
           : video?.title}
       </h1>
       <div className="flex items-start md:items-center md:justify-between justify-start flex-col md:flex-row">
         <div className="flex items-center">
-          <p className="text-xs text-gray-200 mr-1">
+          <p className="text-sm text-[#999] mr-1">
             {video?.totalView} lượt xem
           </p>
-          <p className="text-xs text-gray-200 ml-1">
+          <p className="text-sm text-[#999] ml-1">
             {calculateCreatedTime(video?.createdAt)}
           </p>
         </div>

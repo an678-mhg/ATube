@@ -42,15 +42,16 @@ const InputComment = ({ addComment }) => {
           className="relative flex items-center overflow-hidden"
         >
           <img
+            alt="img"
             src={currentUser?.avatar}
-            className="w-[30px] h-[30px] rounded-full border border-red-500 absolute left-[10px]"
+            className="w-[30px] h-[30px] rounded-full bg-black absolute left-[10px]"
           />
           <input
             onKeyUp={(e) => {
               e.stopPropagation();
             }}
             type="text"
-            className="py-2 px-12 w-full rounded-md bg-transparent outline-none border border-red-500 text-[16px]"
+            className="py-2 px-12 w-full rounded-md bg-transparent outline-none bg-black text-[16px]"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Viết gì đó về video này...."
@@ -65,10 +66,11 @@ const InputComment = ({ addComment }) => {
           </button>
         </form>
       ) : (
-        <div className="py-2 w-full bg-transparent border border-red-500 rounded-md relative flex items-center px-12">
+        <div className="py-2 w-full bg-transparent bg-black rounded-md relative flex items-center px-12">
           <img
+            alt="img"
             src={"https://www.danhgiaxe.com/images/avatar.jpg"}
-            className="w-[30px] h-[30px] rounded-full border border-red-500 absolute left-[10px]"
+            className="w-[30px] h-[30px] rounded-full absolute left-[10px]"
           />
           <h1>
             Cần{" "}

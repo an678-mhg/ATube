@@ -21,7 +21,6 @@ function App() {
 
   useEffect(() => {
     if (!localStorage.getItem("token")) {
-      console.log("meo có token");
       dispatch(logOut());
       return;
     } else {
