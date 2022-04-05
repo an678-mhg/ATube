@@ -29,7 +29,7 @@ const InputComment = ({ addComment }) => {
   };
 
   return (
-    <div className="mt-8">
+    <div className="mt-8 bg-black rounded-md overflow-hidden">
       {currentUser ? (
         <form
           onSubmit={(e) =>
