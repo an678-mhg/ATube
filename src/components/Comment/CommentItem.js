@@ -25,7 +25,7 @@ const CommentItem = ({ data, deleteComment }) => {
   };
 
   return (
-    <div className="flex mb-4 bg-black p-2 rounded-md">
+    <div className="flex mb-4 p-2 rounded-md">
       <Link
         className="w-[40px] h-[40px] rounded-full overflow-hidden"
         to={`/channel/${data?.userId?._id}`}
@@ -48,11 +48,11 @@ const CommentItem = ({ data, deleteComment }) => {
           <button
             disabled={loading}
             onClick={() => handleDelteComment(data?._id)}
-            className={`py-1 px-2 text-xs rounded-md bg-red-500 ${
+            className={`py-1 px-2 text-xs rounded-md ${
               loading ? "cursor-not-allowed" : "cursor-pointer"
             }`}
           >
-            {loading ? "Đang xóa..." : "Xóa"}
+            X
           </button>
         )}
       </div>

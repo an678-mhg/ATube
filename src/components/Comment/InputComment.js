@@ -29,7 +29,7 @@ const InputComment = ({ addComment }) => {
   };
 
   return (
-    <div className="mt-8 bg-black rounded-md overflow-hidden">
+    <div className="mt-8 rounded-md overflow-hidden">
       {currentUser ? (
         <form
           onSubmit={(e) =>
@@ -39,26 +39,23 @@ const InputComment = ({ addComment }) => {
               content: text,
             })
           }
-          className="relative flex items-center overflow-hidden"
+          className="relative flex items-center overflow-hidden rounded-[200px] border-gray-600 border"
         >
           <img
             alt="img"
             src={currentUser?.avatar}
-            className="w-[30px] h-[30px] rounded-full bg-black absolute left-[10px]"
+            className="w-[30px] h-[30px] rounded-full absolute left-[10px]"
           />
           <input
-            onKeyUp={(e) => {
-              e.stopPropagation();
-            }}
             type="text"
-            className="py-2 px-12 w-full rounded-md bg-transparent outline-none bg-black text-[16px]"
+            className="py-2 px-14 w-full bg-transparent outline-none text-[14px] placeholder:text-[14px]"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Viết gì đó về video này...."
           />
           <button
             disabled={loading}
-            className={`py-2 px-5 bg-red-500 text-white right-[1px] absolute rounded-r-md ${
+            className={`text-[14px] py-2 px-5 text-white right-[1px] absolute ${
               loading ? "cursor-not-allowed" : "cursor-pointer"
             }`}
           >
@@ -66,13 +63,13 @@ const InputComment = ({ addComment }) => {
           </button>
         </form>
       ) : (
-        <div className="py-2 w-full bg-transparent bg-black rounded-md relative flex items-center px-12">
+        <div className="py-2 w-full bg-transparent border-gray-600 border rounded-[200px] relative flex items-center px-12">
           <img
             alt="img"
             src={"https://www.danhgiaxe.com/images/avatar.jpg"}
             className="w-[30px] h-[30px] rounded-full absolute left-[10px]"
           />
-          <h1>
+          <h1 className="text-[14px]">
             Cần{" "}
             <Link
               className="text-blue-500"
