@@ -5,7 +5,7 @@ import ImgFade from "../Shared/ImgFade";
 const VideoCardRow = ({ data, maxlengthTitle }) => {
   return (
     <Link to={`/details/${data._id}`} className="flex justify-center mb-4">
-      <div className={`aspect-[16/9] lg:w-[40%] md:w-[50%] w-[40%]`}>
+      <div className={`aspect-[16/9] xl:w-[35%] lg:w-[40%] md:w-[50%] w-[40%]`}>
         <ImgFade
           lazy_src={
             data?.videoThumnail

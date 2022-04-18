@@ -166,3 +166,11 @@ body::-webkit-scrollbar {
 .navigation-item.active-line::after {
   width: 100%;
 }
+
+.scroll-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scroll-none:hover::-webkit-scrollbar {
+  display: block;
+}

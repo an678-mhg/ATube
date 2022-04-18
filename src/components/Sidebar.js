@@ -25,7 +25,7 @@ const Sidebar = ({ setShowMenu }) => {
   }, [currentUser]);
 
   return (
-    <ul className="pt-5 h-[calc(100vh-65px)] overflow-auto">
+    <ul className="pt-5 h-[calc(100vh-65px)] overflow-auto scroll-none">
       <li onClick={() => setShowMenu(false)}>
         <NavLink
           activeclassname="active"
