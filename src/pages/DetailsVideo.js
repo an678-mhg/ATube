@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import {
   checkDisLikeVideo,
   checkLike,
@@ -28,6 +28,7 @@ const DetailsVideo = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [commentList, setCommentList] = useState([]);
+  const navigate = useNavigate();
 
   const addComment = (comment) => {
     setCommentList([...commentList, comment]);
@@ -82,6 +83,16 @@ const DetailsVideo = () => {
     descViewApi(id);
   }, [id]);
 
+  const handleNextVideoWhenEnded = () => {
+    if (videoRecomment.length === 0) return;
+
+    const result = videoRecomment.filter((p) => p._id !== id);
+
+    const randomIndex = Math.floor(Math.random() * result.length);
+
+    navigate(`/details/${result[randomIndex]?._id}`);
+  };
+
   if (error) return <PageNotFound />;
 
   return (
@@ -96,8 +107,8 @@ const DetailsVideo = () => {
               className="w-full h-full"
               src={video?.videoUrl}
               autoPlay
-              loop
               controls
+              onEnded={handleNextVideoWhenEnded}
             />
           </div>
         )}
@@ -123,8 +134,8 @@ const DetailsVideo = () => {
               />
             ))
         ) : (
-          <div className="h-screen flex items-center justify-center bg-[#222]">
-            No Results!
+          <div className="flex items-center justify-center py-2">
+            No Videos Recomment!
           </div>
         )}
       </div>

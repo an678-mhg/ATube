@@ -3,7 +3,8 @@ import CommentItem from "./CommentItem";
 
 const CommentList = ({ commentList, deleteComment }) => {
   return (
-    <div className="mt-5 h-[200px] overflow-auto rounded-md">
+    <div className={`mt-5 h-auto rounded-md`}>
+      <h3 className="mb-4">Comments</h3>
       {commentList.length > 0 ? (
         commentList.map((p) => (
           <CommentItem key={p._id} data={p} deleteComment={deleteComment} />

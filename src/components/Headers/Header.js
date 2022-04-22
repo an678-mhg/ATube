@@ -3,20 +3,29 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import NavbarUser from "./NavbarUser";
 import NavLogin from "./NavLogin";
+import { useSearchParams } from "../../hooks/useSearchParms";
 
 const Header = ({ setShowMenu }) => {
   const { currentUser } = useSelector((state) => state.auth);
-  const inputRef = useRef();
-  const inputRefMobile = useRef();
+  const timeoutRef = useRef();
   const navigate = useNavigate();
+  const searchParams = useSearchParams();
+  const [text, setText] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
-  const submitForm = (e, value) => {
-    e.preventDefault();
+  const onChangeForm = (e) => {
+    const value = e.target.value;
+    setText(value);
+
     if (!value.trim()) return;
-    navigate(`/search?type=video&q=${value}`);
-    setShowSearch(false);
-    inputRef.current.value = "";
+
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
+    timeoutRef.current = setTimeout(() => {
+      navigate(
+        `/search?type=${searchParams.get("type") || "video"}&q=${value}`
+      );
+    }, 300);
   };
 
   return (
@@ -29,14 +38,21 @@ const Header = ({ setShowMenu }) => {
       </div>
 
       <form
-        onSubmit={(e) => submitForm(e, inputRef.current.value)}
-        className="items-center justify-center py-1 w-[500px] hidden md:flex"
+        onSubmit={(e) => {
+          e.preventDefault();
+          setShowSearch(false);
+          setText("");
+        }}
+        className={`items-center justify-center py-1 w-[500px] ${
+          showSearch ? "top-[50px]" : "top-[-100px]"
+        } fixed max-w-full left-0 flex md:static transition-all z-[9999]`}
       >
         <input
-          ref={inputRef}
-          className="text-white bg-[#222] flex-1 outline-none py-1 px-3 h-[30px]"
+          value={text}
+          className="text-white bg-[#222] flex-1 outline-none py-1 px-3 h-[30px] md:border-none border border-gray-600"
           type="text"
           placeholder="Tìm kiếm"
+          onChange={(e) => onChangeForm(e)}
         />
         <button className="px-3 bg-red-500 w-[45px] h-[30px] flex items-center">
           <i className="text-xl bx bx-search"></i>
@@ -49,23 +65,10 @@ const Header = ({ setShowMenu }) => {
           onClick={() => setShowSearch(!showSearch)}
         >
           <i
-            className={`${
-              showSearch ? "text-xl bx bx-x" : "text-xl bx bx-search"
+            className={`text-xl ${
+              showSearch ? "bx bx-x" : "bx bx-search"
             } text-[25px]`}
           ></i>
-          <form
-            onClick={(e) => e.stopPropagation()}
-            className={`absolute ${
-              showSearch ? "top-[50px]" : "top-[-50px]"
-            } rigth-0 left-0 w-full transition-all border overflow-hidden z-[100]`}
-            onSubmit={(e) => submitForm(e, inputRefMobile.current.value)}
-          >
-            <input
-              ref={inputRefMobile}
-              placeholder="Tìm kiếm"
-              className="text-white bg-[#222] flex-1 outline-none w-full px-3 py-2"
-            />
-          </form>
         </div>
         {currentUser ? <NavbarUser user={currentUser} /> : <NavLogin />}
       </div>

@@ -42,7 +42,7 @@ const CommentItem = ({ data, deleteComment }) => {
             <p className="text-white">{data?.userId?.name}</p>
             <p className="ml-1">{calculateCreatedTime(data?.createdAt)}</p>
           </div>
-          <p className="text-sm font-semibold mt-2">{data?.content}</p>
+          <p className="text-sm font-thin mt-2">{data?.content}</p>
         </div>
         {currentUser?._id === data?.userId?._id && (
           <button

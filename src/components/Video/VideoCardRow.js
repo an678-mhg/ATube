@@ -5,7 +5,7 @@ import ImgFade from "../Shared/ImgFade";
 const VideoCardRow = ({ data, maxlengthTitle }) => {
   return (
     <Link to={`/details/${data._id}`} className="flex justify-center mb-4">
-      <div className={`aspect-[16/9] xl:w-[35%] lg:w-[40%] md:w-[50%] w-[40%]`}>
+      <div className={`aspect-[16/9] xl:w-[35%] lg:w-[45%] md:w-[50%] w-[50%]`}>
         <ImgFade
           lazy_src={
             data?.videoThumnail
@@ -16,12 +16,8 @@ const VideoCardRow = ({ data, maxlengthTitle }) => {
         />
       </div>
       <div className="px-2 h-full flex-1">
-        <p className="text-[12px] font-semibold">
-          {data?.title?.length > maxlengthTitle
-            ? data?.title?.slice(0, maxlengthTitle) + "..."
-            : data?.title}
-        </p>
-        <p className="text-xs font-medium mt-2 text-[#999]">
+        <p className="text-[12px] font-semibold line-clamp-2">{data?.title}</p>
+        <p className="text-xs font-medium mt-2 text-[#999] line-clamp-1">
           {data?.writer?.name}
         </p>
         <p className="text-xs font-medium text-[#999]">

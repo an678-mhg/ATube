@@ -44,11 +44,11 @@ const InputComment = ({ addComment }) => {
           <img
             alt="img"
             src={currentUser?.avatar}
-            className="w-[30px] h-[30px] rounded-full absolute left-[10px]"
+            className="w-[30px] h-[30px] rounded-full absolute left-[5px]"
           />
           <input
             type="text"
-            className="py-2 px-14 w-full bg-transparent outline-none text-[14px] placeholder:text-[14px]"
+            className="py-2 px-10 w-full bg-transparent outline-none text-[14px] placeholder:text-[14px]"
             value={text}
             onChange={(e) => setText(e.target.value)}
             placeholder="Viết gì đó về video này...."
@@ -67,7 +67,7 @@ const InputComment = ({ addComment }) => {
           <img
             alt="img"
             src={"https://www.danhgiaxe.com/images/avatar.jpg"}
-            className="w-[30px] h-[30px] rounded-full absolute left-[10px]"
+            className="w-[30px] h-[30px] rounded-full absolute left-[5px]"
           />
           <h1 className="text-[14px]">
             Cần{" "}

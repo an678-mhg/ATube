@@ -19,6 +19,10 @@ body::-webkit-scrollbar {
   display: none;
 }
 
+img {
+  object-fit: cover;
+}
+
 .active {
   background-color: #ef4444;
   border-radius: 4px;
@@ -173,4 +177,19 @@ body::-webkit-scrollbar {
 
 .scroll-none:hover::-webkit-scrollbar {
   display: block;
+}
+
+.line-clamp-1,
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+.line-clamp-1 {
+  -webkit-line-clamp: 1;
+}
+
+.line-clamp-2 {
+  -webkit-line-clamp: 2;
 }

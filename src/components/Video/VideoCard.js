@@ -55,10 +55,8 @@ const VideoCard = ({ data, edit }) => {
           </Link>
           <div className="ml-5 flex-1 flex flex-col items-start justify-start">
             <Link to={`/details/${data?._id}`}>
-              <p className="text-[12px] hover:underline font-semibold">
-                {data?.title?.length > 30
-                  ? data?.title?.trim().slice(0, 30) + "..."
-                  : data?.title?.trim()}
+              <p className="text-[12px] hover:underline font-semibold line-clamp-2">
+                {data?.title}
               </p>
             </Link>
             <div>

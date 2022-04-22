@@ -8,7 +8,7 @@ const ChannelItem = ({ data }) => {
       to={`/channel/${data?.channelId?._id}`}
       className="flex items-center mb-4"
     >
-      <div className="w-[30px] h-[30px] overflow-hidden rounded-full border border-red-500">
+      <div className="w-[30px] h-[30px] overflow-hidden rounded-full">
         <ImageFade
           className={"w-full h-full object-cover"}
           lazy_src={data?.channelId?.avatar}
