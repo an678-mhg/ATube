@@ -15,7 +15,7 @@ const ChannelCard = ({ data }) => {
         <p className="text-md font-semibold">{data?.name}</p>
         <div className="mt-4">
           <p className="text-sm text-[#999]">
-            {data?.email.length > 30
+            {data?.email?.length > 30
               ? data?.email.slice(0, 30) + "..."
               : data?.email}
           </p>

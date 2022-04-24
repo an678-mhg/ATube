@@ -84,9 +84,9 @@ const DetailsVideo = () => {
   }, [id]);
 
   const handleNextVideoWhenEnded = () => {
-    if (videoRecomment.length === 0) return;
-
     const result = videoRecomment.filter((p) => p._id !== id);
+
+    if (result.length === 0) return;
 
     const randomIndex = Math.floor(Math.random() * result.length);
 
