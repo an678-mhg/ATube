@@ -16,7 +16,7 @@ const ImageFade = ({
     const observer = new IntersectionObserver((entries) => {
       if (entries[0].isIntersecting) {
         img.setAttribute("src", lazy_src);
-      }
+      } 
     });
 
     if (img) {

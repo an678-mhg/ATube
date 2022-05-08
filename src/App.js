@@ -20,9 +20,8 @@ function App() {
   }, [location.search, location.pathname]);
 
   useEffect(() => {
-    if (!localStorage.getItem("token")) {
-      dispatch(logOut());
-      return;
+    if(localStorage.getItem('token') === 'null') {
+      dispatch(logOut())
     } else {
       setAuthToken(localStorage.getItem("token"));
       (async () => {
