@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import ImgFade from "../Shared/ImgFade";
 
-const VideoCardRow = ({ data, maxlengthTitle }) => {
+const VideoCardRow = ({ data }) => {
   return (
     <Link to={`/details/${data._id}`} className="flex justify-center mb-4">
       <div className={`aspect-[16/9] xl:w-[35%] lg:w-[45%] md:w-[50%] w-[50%]`}>
