@@ -20,8 +20,11 @@ const VideoCard = ({ data, edit }) => {
 
   return (
     <div>
-      <div className="aspect-[16/9] rounded-sm">
-        <Link to={`/details/${data?._id}`}>
+      <div>
+        <Link
+          to={`/details/${data?._id}`}
+          className="block aspect-video bg-[#333]"
+        >
           <ImageFade
             alt={data?.title}
             className="w-full h-full object-cover"
@@ -55,7 +58,7 @@ const VideoCard = ({ data, edit }) => {
           </Link>
           <div className="ml-5 flex-1 flex flex-col items-start justify-start">
             <Link to={`/details/${data?._id}`}>
-              <p className="text-[12px] hover:underline font-semibold line-clamp-2">
+              <p className="text-[14px] hover:underline font-semibold line-clamp-2">
                 {data?.title}
               </p>
             </Link>
